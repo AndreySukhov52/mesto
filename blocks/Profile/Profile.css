@@ -1,0 +1,13 @@
+.Profile {
+    max-width: 880px;
+    display: flex;
+    padding: 0 0 51px;
+}
+
+@media (max-width: 320px) {
+    .Profile {
+      max-width: 282px;
+      padding: 0 19px 36px;
+      flex-direction: column;
+    }
+}
