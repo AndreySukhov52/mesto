@@ -1,5 +1,5 @@
 .Profile__info {
     max-width: 336px;
     display: flex;
-    flex-wrap: wrap;   
+    flex-direction: column;
 }
