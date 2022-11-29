@@ -1,11 +1,11 @@
-.popup__botton {
+.popup__button {
     all: unset;
     margin: 0 36px 0;
     color: #FFFFFF;
     background: #000000;
     border-radius: 2px;
     width: 358px;
-    height: 50px;
+    min-height: 50px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -15,3 +15,12 @@
     align-items: center;
     cursor: pointer;
 }
+
+@media screen and (max-width: 320px) {
+    .popup__button {
+      width: 238px;
+      min-height: 46px;
+      margin: 0 22px 0;
+    }
+  }
+  
