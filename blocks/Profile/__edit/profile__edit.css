@@ -1,7 +1,11 @@
 .Profile__edit {
+    all: unset;
     background-color: #000000;
     background-image: url(../../../images/Edit\ Button.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
     border: white;
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
