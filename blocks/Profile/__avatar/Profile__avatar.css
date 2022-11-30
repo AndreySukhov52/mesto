@@ -5,3 +5,11 @@
     border-radius: 50%;
     margin-right: 30px;
 }
+
+@media screen and (max-width: 320px) {
+    .Profile__avatar {
+      margin: 0 0 22px;
+      padding: 0;
+    }
+  }
+  

@@ -9,3 +9,14 @@
     height: 24px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 320px) {
+    .Profile__edit {
+        width: 18px;
+        height: 18px;
+    }
+  }
+  
+  .Profile__edit:hover {
+    opacity: .6;
+  }

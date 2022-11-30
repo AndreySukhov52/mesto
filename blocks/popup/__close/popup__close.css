@@ -19,4 +19,8 @@
         right: 0;
     }
   }
+
+  .popup__close:hover {
+    opacity: .6;
+  }
   

@@ -24,3 +24,6 @@
     }
   }
   
+  .popup__button:hover {
+    opacity: .8;
+  }
