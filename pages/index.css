@@ -25,3 +25,10 @@
 @import url(../blocks/popup/__item-job/popup__item-job.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/Elements/Elements.css);
+@import url(../blocks/Element/Element.css);
+@import url(../blocks/Element/__image/Element__image.css);
+@import url(../blocks/Element/__text/Element__text.css);
+@import url(../blocks/Element/__like/Element__like.css);
+@import url(../blocks/footer/footer.css);
+

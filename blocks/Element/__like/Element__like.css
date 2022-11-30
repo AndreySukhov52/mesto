@@ -1,0 +1,10 @@
+.Element__like {
+    width: 22px;
+    height: 19px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.Element__like:hover {
+    opacity: .5;
+}
