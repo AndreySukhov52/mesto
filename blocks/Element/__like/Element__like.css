@@ -1,7 +1,12 @@
 .Element__like {
+    all: unset;
+    margin: 5px 5px 0 0;
+    padding: 0;
     width: 22px;
     height: 19px;
-    object-fit: cover;
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
     cursor: pointer;
 }
 
