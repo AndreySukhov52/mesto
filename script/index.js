@@ -3,8 +3,6 @@ const popup = document.querySelector('.popup');             // найти сел
 const popupClose = document.querySelector('.popup__close'); // найти кнопку закрыть в форме.
 const popupButtonSave = document.querySelector('.popup__button'); // найти кнопка сохранить в форме.
 
-
-
 popupOpen.addEventListener('click', openPopup); // слушаем кнопку редактировать профиль .Profile__edit
 popupClose.addEventListener('click', closePopup); // слушаем кнопку закрыть форму .popup__close
 popupButtonSave.addEventListener('click', saveValuePopup); // слушаем кнопку сохранить .popup__button
@@ -30,17 +28,11 @@ function saveValuePopup() {
     document.querySelector('.Profile__about-me').innerHTML = valueJob; // найти элемент с классом .Profile__about-me и записать в HTML значения из переменной valueJob  
 };
 
-//function handleFormSubmit (evt) {
-//    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+function handleFormSubmit (evt) {
+    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
-
-    // Получите значение полей jobInput и nameInput из свойства value
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-
-    // Вставьте новые значения с помощью textContent
-//}
+}
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-//formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmit);
