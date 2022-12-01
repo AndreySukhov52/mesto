@@ -33,4 +33,6 @@
 @import url(../blocks/Element/__like/Element__like.css);
 @import url(../blocks/Element/__like/_activ/Element__like_activ.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
+
 
