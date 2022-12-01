@@ -6,9 +6,19 @@
     gap: 20px 17px;
 }
 
+@media screen and (max-width: 768px) {
+  .Elements {
+    max-width: 638px;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 20px 66px;
+    gap: 20px 17px;
+  }
+}
+
 @media screen and (max-width: 320px) {
     .Elements {
       max-width: 282px;
+      grid-template-columns: 1fr;
       margin: 0 19px 48px;
       gap: 20px;
     }
