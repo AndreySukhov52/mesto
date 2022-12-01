@@ -5,10 +5,16 @@
     object-fit: cover;
 }
 
+@media (max-width: 879px) {
+    .header__logo {
+      padding: 0 27px 41px;
+    }
+}
+
 @media (max-width: 320px) {
     .header__logo {
-        max-width: 104px;
-        min-height: 24.4px;
-        padding: 28px 27px 31.6px;
+      max-width: 104px;
+      min-height: 24.4px;
+      padding: 0 27px 31.6px;
     }
 }
