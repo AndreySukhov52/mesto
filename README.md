@@ -8,6 +8,6 @@
 
 **Проект**
 
-* [Ссылка на проект](https://AndreySukhov52.github.io/russian-travel/)
+* [Ссылка на проект](https://andreysukhov52.github.io/mesto//)
 
 
