@@ -13,7 +13,8 @@
     line-height: 22px;
     text-align: center;
     align-items: center;
-    cursor: pointer;
+    cursor: url(../../../images/Pointer.png), pointer;
+    transition: opacity .3s ease;
 }
 
 @media screen and (max-width: 320px) {

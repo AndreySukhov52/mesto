@@ -7,7 +7,8 @@
     background-image: url(../../../images/like.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: pointer;
+    cursor: url(../../../images/Pointer.png), pointer;
+    transition: opacity .3s ease;
 }
 
 .Element__like:hover {

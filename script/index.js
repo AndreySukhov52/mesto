@@ -7,6 +7,7 @@ popupOpen.addEventListener('click', openPopup); // слушаем кнопку �
 popupClose.addEventListener('click', closePopup); // слушаем кнопку закрыть форму .popup__close
 popupButtonSave.addEventListener('click', saveValuePopup); // слушаем кнопку сохранить .popup__button
 
+
 function openPopup() {
     popup.classList.add('popup__opened'); // добавляем класс элементу popup__opened
 }
@@ -21,18 +22,16 @@ popup.addEventListener('click', function(event) {  // сравниваем зн�
     }
 });
 
-function saveValuePopup() {
+function saveValuePopup(evt) {
     let valueName = document.querySelector('.popup__item-name').value; // найти значение value у элемента с классом .popup__item-name
     let valueJob = document.querySelector('.popup__item-job').value;   // найти значение value у элемента с классом .popup__item-job
     document.querySelector('.Profile__name').innerHTML = valueName;    //  найти элемент с классом .Profile__name и записать в HTML значения из переменной valueName         
-    document.querySelector('.Profile__about-me').innerHTML = valueJob; // найти элемент с классом .Profile__about-me и записать в HTML значения из переменной valueJob  
+    document.querySelector('.Profile__about-me').innerHTML = valueJob; // найти элемент с классом .Profile__about-me и записать в HTML значения из переменной valueJob
+    evt.preventDefault();  // Эта строчка отменяет стандартную отправку формы.
 };
 
-function handleFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
-}
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+document.addEventListener('keydown', function (e) { //слушаем нажатие клавиш на клавиатуре
+    if (e.which === 13) {      // если код нажатой клавиши равен 13(клавиша enter)
+            saveValuePopup(); // выполняем функцию сохранения данных
+    }
+});

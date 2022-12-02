@@ -8,7 +8,8 @@
     position: absolute;
     top: -40px;
     right: -40px;
-    cursor: pointer;
+    cursor: url(../../../images/Pointer.png), pointer;
+    transition: opacity .3s ease;
 }
 
 @media screen and (max-width: 320px) {

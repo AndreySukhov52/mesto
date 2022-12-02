@@ -10,6 +10,13 @@
     overflow: hidden;
 }
 
+@media screen and (max-width: 700px) {
+  .Profile__about-me {
+    text-align: center;
+    margin: 0 0 36px;
+  }
+}
+
 @media screen and (max-width: 320px) {
     .Profile__about-me {
       max-width: 282px;
