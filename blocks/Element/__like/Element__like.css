@@ -1,16 +1,16 @@
 .Element__like {
-    all: unset;
-    margin: 5px 5px 0 0;
-    padding: 0;
-    width: 22px;
-    height: 19px;
-    background-image: url(../../../images/like.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: url(../../../images/Pointer.png), pointer;
-    transition: opacity .3s ease;
+  all: unset;
+  margin: 5px 5px 0 0;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: url(../../../images/Pointer.png), pointer;
+  transition: opacity 0.3s ease;
 }
 
 .Element__like:hover {
-    opacity: .5;
+  opacity: 0.5;
 }

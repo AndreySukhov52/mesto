@@ -1,5 +1,5 @@
-  .Elements {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.Elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

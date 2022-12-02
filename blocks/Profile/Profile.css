@@ -1,9 +1,9 @@
 .Profile {
-    max-width: 880px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0 51px;
+  max-width: 880px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 51px;
 }
 
 @media (max-width: 900px) {
@@ -22,9 +22,9 @@
 }
 
 @media (max-width: 320px) {
-    .Profile {
-      max-width: 282px;
-      padding: 0 19px 36px;
-      flex-direction: column;
-    }
+  .Profile {
+    max-width: 282px;
+    padding: 0 19px 36px;
+    flex-direction: column;
+  }
 }

@@ -1,16 +1,16 @@
 .popup__job {
-    margin: 0 auto;
-    margin-bottom: 48px;
-    padding: 0 0 13px;
-    max-width: 358px;
-    border: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin: 0 auto;
+  margin-bottom: 48px;
+  padding: 0 0 13px;
+  max-width: 358px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 320px) {
-    .popup__job {
-        padding: 0 0 13px;
-        max-width: 238px;
-        margin-bottom: 45px;
-    }
+  .popup__job {
+    padding: 0 0 13px;
+    max-width: 238px;
+    margin-bottom: 45px;
   }
+}

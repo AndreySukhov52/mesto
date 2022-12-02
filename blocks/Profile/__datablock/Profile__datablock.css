@@ -1,6 +1,6 @@
 .Profile__datablock {
-    display: flex;
-    max-width: 55%;
+  display: flex;
+  max-width: 55%;
 }
 
 @media screen and (max-width: 700px) {
@@ -8,14 +8,13 @@
     flex-direction: column;
     max-width: 320px;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
   }
 }
 @media screen and (max-width: 320px) {
-    .Profile__datablock {
-      flex-direction: column;
-      max-width: 282px;
-      align-items: center;
-    }
+  .Profile__datablock {
+    flex-direction: column;
+    max-width: 282px;
+    align-items: center;
+  }
 }
-  

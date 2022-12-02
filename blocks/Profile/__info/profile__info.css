@@ -1,13 +1,12 @@
 .Profile__info {
-    max-width: 336px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  max-width: 336px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media screen and (max-width: 320px) {
-    .Profile__info {
-      max-width: 282px;
-    }
+  .Profile__info {
+    max-width: 282px;
   }
-  
+}

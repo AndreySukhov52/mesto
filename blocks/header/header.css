@@ -1,8 +1,8 @@
 .header {
-    max-width: 880px;
-    margin: 0 0 40px;
-    padding: 45px 0 0;
-    border-bottom: 1px solid rgba(255, 255, 255, .3);
+  max-width: 880px;
+  margin: 0 0 40px;
+  padding: 45px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 879px) {
@@ -13,9 +13,9 @@
 }
 
 @media (max-width: 320px) {
-    .header {
-      margin: 0 0 40px;
-      max-width: 320px;
-      padding: 28px 0 0;
-    }
+  .header {
+    margin: 0 0 40px;
+    max-width: 320px;
+    padding: 28px 0 0;
+  }
 }

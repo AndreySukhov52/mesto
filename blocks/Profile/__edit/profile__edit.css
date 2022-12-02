@@ -1,23 +1,23 @@
 .Profile__edit {
-    all: unset;
-    background-color: #000000;
-    background-image: url(../../../images/Edit\ Button.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: white;
-    width: 24px;
-    height: 24px;
-    cursor: url(../../../images/Pointer.png), pointer;
-    transition: opacity .3s ease;
+  all: unset;
+  background-color: #000000;
+  background-image: url(../../../images/Edit\ Button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: white;
+  width: 24px;
+  height: 24px;
+  cursor: url(../../../images/Pointer.png), pointer;
+  transition: opacity 0.3s ease;
 }
 
 @media screen and (max-width: 320px) {
-    .Profile__edit {
-        width: 18px;
-        height: 18px;
-    }
+  .Profile__edit {
+    width: 18px;
+    height: 18px;
   }
-  
-  .Profile__edit:hover {
-    opacity: .6;
-  }
+}
+
+.Profile__edit:hover {
+  opacity: 0.6;
+}

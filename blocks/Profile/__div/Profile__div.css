@@ -1,6 +1,6 @@
 .Profile__div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
 }

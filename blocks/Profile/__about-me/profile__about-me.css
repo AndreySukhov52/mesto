@@ -1,13 +1,13 @@
 .Profile__about-me {
-    margin: 0;
-    padding: 0;
-    max-width: 336px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  max-width: 336px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 700px) {
@@ -18,12 +18,11 @@
 }
 
 @media screen and (max-width: 320px) {
-    .Profile__about-me {
-      max-width: 282px;
-      font-size: 14px;
-      line-height: 17px;
-      text-align: center;
-      margin: 0 0 36px;
-    }
+  .Profile__about-me {
+    max-width: 282px;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin: 0 0 36px;
   }
-  
+}
