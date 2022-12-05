@@ -1,4 +1,4 @@
-const popupOpen = document.querySelector('.Profile__edit'); // найти кнопку рекадтировать профиль
+const popupOpen = document.querySelector('.profile__edit'); // найти кнопку рекадтировать профиль
 const popup = document.querySelector('.popup');             // найти селектор блока popup       
 const popupClose = document.querySelector('.popup__close'); // найти кнопку закрыть в форме.
 const popupButtonSave = document.querySelector('.popup__button'); // найти кнопка сохранить в форме.
@@ -25,8 +25,8 @@ popup.addEventListener('click', function(event) {  // сравниваем зн�
 function saveValuePopup(evt) {
     let valueName = document.querySelector('.popup__item-name').value; // найти значение value у элемента с классом .popup__item-name
     let valueJob = document.querySelector('.popup__item-job').value;   // найти значение value у элемента с классом .popup__item-job
-    document.querySelector('.Profile__name').innerHTML = valueName;    //  найти элемент с классом .Profile__name и записать в HTML значения из переменной valueName         
-    document.querySelector('.Profile__about-me').innerHTML = valueJob; // найти элемент с классом .Profile__about-me и записать в HTML значения из переменной valueJob
+    document.querySelector('.profile__name').innerHTML = valueName;    //  найти элемент с классом .Profile__name и записать в HTML значения из переменной valueName         
+    document.querySelector('.profile__about-me').innerHTML = valueJob; // найти элемент с классом .Profile__about-me и записать в HTML значения из переменной valueJob
     evt.preventDefault();  // Эта строчка отменяет стандартную отправку формы.
 };
 
