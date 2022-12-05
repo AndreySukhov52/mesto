@@ -1,4 +1,4 @@
-.Profile__edit {
+.profile__edit {
   all: unset;
   background-color: #000000;
   background-image: url(../../../images/Edit\ Button.svg);
@@ -12,12 +12,12 @@
 }
 
 @media screen and (max-width: 320px) {
-  .Profile__edit {
+  .profile__edit {
     width: 18px;
     height: 18px;
   }
 }
 
-.Profile__edit:hover {
+.profile__edit:hover {
   opacity: 0.6;
 }

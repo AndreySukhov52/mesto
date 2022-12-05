@@ -1,4 +1,4 @@
-.Elements__grid {
+.elements__grid {
   max-width: 880px;
   margin: 0 0 66px;
   display: grid;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 879px) {
-  .Elements__grid {
+  .elements__grid {
     max-width: 624px;
     grid-template-columns: 1fr 1fr;
     margin: 0 20px 66px;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 624px) {
-  .Elements__grid {
+  .elements__grid {
     max-width: 282px;
     grid-template-columns: 1fr;
     margin: 0 19px 48px;
@@ -25,7 +25,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .Elements__grid {
+  .elements__grid {
     max-width: 282px;
     grid-template-columns: 1fr;
     margin: 0 19px 48px;
