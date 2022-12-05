@@ -11,10 +11,8 @@
     align-items: center;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
   .profile__datablock {
-    flex-direction: column;
     max-width: 282px;
-    align-items: center;
   }
 }

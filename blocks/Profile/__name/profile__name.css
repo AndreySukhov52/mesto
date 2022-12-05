@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
   .profile__name {
     max-width: 189px;
     padding: 0 10px 14px 0;

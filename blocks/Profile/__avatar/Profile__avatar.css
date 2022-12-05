@@ -12,10 +12,3 @@
     padding: 0;
   }
 }
-
-@media screen and (max-width: 320px) {
-  .profile__avatar {
-    margin: 0 0 22px;
-    padding: 0;
-  }
-}
