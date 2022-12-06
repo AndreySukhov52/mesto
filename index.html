@@ -7,7 +7,6 @@
     <meta name="author" content="Сухов Андрей" />
     <meta name="description" content="Разные места из России с фото" />
     <meta name="keywords" content="Место" />
-    <script async src="./script/index.js"></script>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
@@ -15,7 +14,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/Vector.svg"
+          src="./images/logo.svg"
           alt="Логотип Место"
         />
       </header>
@@ -29,43 +28,21 @@
             />
             <div class="profile__info">
               <div class="profile__div">
-                <p class="profile__name">Жак-Ив Кусто</p>
-                <button class="profile__edit"></button>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit" type="button" aria-label="редактировать"></button>
               </div>
               <p class="profile__about-me">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-button">
+          <button type="button" aria-label="добавить" class="profile__add-button">
             <img
               class="profile__button-image"
-              src="./images/Vector.png"
+              src="./images/Vector.svg"
               alt="крестик на кнопке"
             />
           </button>
         </section>
-        <section class="popup">
-          <form class="popup__container" action="#">
-            <button class="popup__close"></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <fieldset class="popup__name">
-              <input
-                class="popup__item-name"
-                type="text"
-                value="Жак-Ив Кусто"
-              />
-            </fieldset>
-            <fieldset class="popup__job">
-              <input
-                class="popup__item-job"
-                type="text"
-                value="Исследователь океана"
-              />
-            </fieldset>
-            <button class="popup__button" type="submit">Сохранить</button>
-          </form>
-        </section>
         <section class="elements">
-          <div class="elements__grid">
             <figure class="element">
               <img
                 class="element__image"
@@ -73,7 +50,7 @@
                 alt="Фото старого храма"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Карачаево-Черкессия</p>
+                <h2 class="element__text">Карачаево-Черкессия</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
@@ -84,7 +61,7 @@
                 alt="Фото гора в далеке"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Гора Эльбрус</p>
+                <h2 class="element__text">Гора Эльбрус</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
@@ -95,7 +72,7 @@
                 alt="Фото вершина горы"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Домбай</p>
+                <h2 class="element__text">Домбай</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
@@ -106,7 +83,7 @@
                 alt="Фото Роза Хутор"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Роза Хутор</p>
+                <h2 class="element__text">Роза Хутор</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
@@ -117,7 +94,7 @@
                 alt="Фото крым облака в горах"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Крым</p>
+                <h2 class="element__text">Крым</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
@@ -128,16 +105,39 @@
                 alt="Фото гор из долины"
               />
               <figcaption class="element__caption">
-                <p class="element__text">Республика Алтай</p>
+                <h2 class="element__text">Республика Алтай</h2>
                 <button class="element__like"></button>
               </figcaption>
             </figure>
-          </div>
         </section>
       </main>
       <footer class="footer">
-        <h2 class="footer__text">© 2022 Mesto Russia</h2>
+        <p class="footer__text">© 2022 Mesto Russia</p>
       </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <button type="button" aria-label="закрыть" class="popup__close"></button>
+          <form class="form" action="#" name="user_profile" method="post">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <fieldset class="popup__name">
+            <input
+              class="popup__item-name"
+              type="text"
+              value="Жак-Ив Кусто"
+            />
+          </fieldset>
+          <fieldset class="popup__job">
+            <input
+              class="popup__item-job"
+              type="text"
+              value="Исследователь океана"
+            />
+          </fieldset>
+          <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
+        </form>
+        </div>
+      </div>
     </div>
+    <script async src="./script/index.js"></script>
   </body>
 </html>
