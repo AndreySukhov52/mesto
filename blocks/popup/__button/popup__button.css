@@ -14,7 +14,7 @@
   text-align: center;
   align-self: stretch;
   cursor: url(../../../images/Pointer.svg), pointer;
-  transition: opacity 0.3s ease;
+  transition: opacity .3s ease;
 }
 
 @media screen and (max-width: 520px) {
@@ -28,5 +28,5 @@
 }
 
 .popup__button:hover {
-  opacity: 0.8;
+  opacity: .8;
 }
