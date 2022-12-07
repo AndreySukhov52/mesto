@@ -6,14 +6,14 @@
   border-radius: 2px;
   max-width: 358px;
   min-height: 50px;
-  font-family: "Inter";
+  font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
   align-self: stretch;
-  cursor: url(../../../images/Pointer.png), pointer;
+  cursor: url(../../../images/Pointer.svg), pointer;
   transition: opacity 0.3s ease;
 }
 
@@ -22,6 +22,8 @@
     max-width: 238px;
     min-height: 46px;
     margin: 0 22px 25px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 

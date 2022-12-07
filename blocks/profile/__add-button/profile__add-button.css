@@ -2,10 +2,10 @@
   padding: 0;
   width: 150px;
   min-height: 50px;
-  background-color: #000000;
+  background-color: transparent;
   border: 2px solid #ffffff;
   border-radius: 2px;
-  cursor: url(../../../images/Pointer.png), pointer;
+  cursor: url(../../../images/Pointer.svg), pointer;
   transition: opacity 0.3s ease;
 }
 

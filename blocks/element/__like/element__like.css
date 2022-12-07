@@ -7,7 +7,7 @@
   background-image: url(../../../images/like.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: url(../../../images/Pointer.png), pointer;
+  cursor: url(../../../images/Pointer.svg), pointer;
   transition: opacity 0.3s ease;
 }
 
