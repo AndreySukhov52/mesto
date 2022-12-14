@@ -148,13 +148,14 @@
       <footer class="footer">
         <p class="footer__text">© 2022 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_profile">
         <div class="popup__container">
           <form class="popup__form" action="#" name="user_profile">
             <button
               type="button"
               aria-label="закрыть"
-              class="popup__close"
+              class="popup__close popup__close_button_profile"
+              name="close_editprofile"
             ></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <input
@@ -175,13 +176,13 @@
           </form>
         </div>
       </div>
-      <div class="popup">
+      <div class="popup popup_cards">
         <div class="popup__container">
-          <form class="popup__form" action="#" name="add_cards">
+          <form class="popup__form popup__form-add" action="#" name="add_cards">
             <button
               type="button"
               aria-label="закрыть"
-              class="popup__close"
+              class="popup__close popup__close_button_cards"
             ></button>
             <h2 class="popup__title">Новое место</h2>
             <input
