@@ -47,7 +47,7 @@
           </button>
         </section>
         <section class="elements">
-          <figure class="element">
+          <!--<figure class="element">
             <button class="element__delete" type="button" aria-label="удалить"></button>
             <img
               class="element__image"
@@ -142,7 +142,7 @@
                 aria-label="лайк"
               ></button>
             </figcaption>
-          </figure>
+          </figure>-->
         </section>
       </main>
       <footer class="footer">
@@ -204,6 +204,24 @@
         </div>
       </div>
     </div>
+      <template id="element_template">
+        <figure class="element">
+          <button class="element__delete" type="button" aria-label="удалить"></button>
+          <img
+            class="element__image"
+            src=""
+            alt="Фото старого храма"
+          />
+          <figcaption class="element__caption">
+            <h2 class="element__text"></h2>
+            <button
+              class="element__like"
+              type="button"
+              aria-label="лайк"
+            ></button>
+          </figcaption>
+        </figure>
+      </template>
     <script async src="./script/index.js"></script>
   </body>
 </html>

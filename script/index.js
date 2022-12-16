@@ -1,3 +1,29 @@
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
 /** найти кнопку рекадтировать профиль */
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
@@ -22,6 +48,39 @@ let profileAbout = document.querySelector('.profile__about-me');
 let valueName = document.querySelector('.popup__input_item_name');
 /** найти input с классом .popup__input_item_job и записать в переменную valueJob */
 let valueJob = document.querySelector('.popup__input_item_job');
+
+const containerElement = document.querySelector('.elements');
+const template = document.querySelector('#element_template');
+
+
+function renderCards() {initialCards.forEach(createElement)};
+
+const createElement = ({name, link}) => {
+    const element = template.content.querySelector('.element').cloneNode(true);
+    element.querySelector('.element__image').src = link;
+    element.querySelector('.element__text').textContent = name;
+    containerElement.append(element);
+
+    const deleteElement = element.querySelector('.element__delete').addEventListener('click', () => {
+        element.remove();
+    });
+
+    const like = element.querySelector('.element__like').addEventListener('click', (e) => 
+    e.target.classList.toggle('element__like_activ')
+    );
+    };
+    renderCards();
+    
+//const renderCards = (name, link) => {
+//    containerElement.append(createElement(name, link))
+//  }
+  
+//  initialCards.forEach((name, link) => {
+//    renderCards(name, link);
+//  })
+
+
+  
 
 
 
