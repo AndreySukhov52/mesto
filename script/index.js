@@ -59,7 +59,7 @@ const createElement = ({name, link}) => {
     const element = template.content.querySelector('.element').cloneNode(true);
     element.querySelector('.element__image').src = link;
     element.querySelector('.element__text').textContent = name;
-    containerElement.append(element);
+    containerElement.prepend(element);
 
     const deleteElement = element.querySelector('.element__delete').addEventListener('click', () => {
         element.remove();
@@ -71,17 +71,6 @@ const createElement = ({name, link}) => {
     };
     renderCards();
     
-//const renderCards = (name, link) => {
-//    containerElement.append(createElement(name, link))
-//  }
-  
-//  initialCards.forEach((name, link) => {
-//    renderCards(name, link);
-//  })
-
-
-  
-
 
 
 /** добавляем модификатор popup_opened блокуpopup_profile */
@@ -112,7 +101,15 @@ function saveValuePopup(evt) {
     closePopup();
 };
 
-
+function saveCard(evt) {
+  /** Эта строчка отменяет стандартную отправку формы. */
+  evt.preventDefault();
+  const name = document.querySelector('.popup__input_item_name-mesto').value;
+  const link = document.querySelector('.popup__input_item_link').value;
+  const addCard = createElement({name, link})
+  closePopup()
+  popupFormCards.reset();
+};
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
 popupOpenEdit.addEventListener('click', openPopup);
@@ -123,4 +120,6 @@ popupCloseProfile.addEventListener('click', closePopup);
 /** слушаем кнопку закрыть форму .popup__close */
 popupCloseCards.addEventListener('click', closePopup);
 /** слушаем отрпавку формы по событию 'submit' */
-popupForm.addEventListener('submit', saveValuePopup);
+popupForm.addEventListener('submit', saveValuePopup); 
+/** слушаем отрпавку формы по событию 'submit' */
+popupFormCards.addEventListener('submit', saveCard);
