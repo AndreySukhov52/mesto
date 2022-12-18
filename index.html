@@ -1,229 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Место</title>
-    <meta name="author" content="Сухов Андрей" />
-    <meta name="description" content="Разные места из России с фото" />
-    <meta name="keywords" content="Место" />
-    <link rel="stylesheet" href="./pages/index.css" />
-  </head>
-  <body class="page">
-    <div class="page__container">
-      <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
-      </header>
-      <main class="content">
-        <section class="profile">
-          <div class="profile__datablock">
-            <img
-              class="profile__avatar"
-              src="./images/avatar.jpg"
-              alt="Аватар"
-            />
-            <div class="profile__info">
-              <div class="profile__div">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button
-                  class="profile__edit"
-                  type="button"
-                  aria-label="редактировать"
-                ></button>
-              </div>
-              <p class="profile__about-me">Исследователь океана</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Место</title>
+  <meta name="author" content="Сухов Андрей" />
+  <meta name="description" content="Разные места из России с фото" />
+  <meta name="keywords" content="Место" />
+  <link rel="stylesheet" href="./pages/index.css" />
+</head>
+
+<body class="page">
+  <div class="page__container">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__datablock">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар" />
+          <div class="profile__info">
+            <div class="profile__div">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit" type="button" aria-label="редактировать"></button>
             </div>
+            <p class="profile__about-me">Исследователь океана</p>
           </div>
-          <button
-            type="button"
-            aria-label="добавить"
-            class="profile__add-button"
-          >
-            <img
-              class="profile__button-image"
-              src="./images/Vector.svg"
-              alt="крестик на кнопке"
-            />
+        </div>
+        <button type="button" aria-label="добавить" class="profile__add-button">
+          <img class="profile__button-image" src="./images/Vector.svg" alt="крестик на кнопке" />
+        </button>
+      </section>
+      <section class="elements">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">© 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_profile">
+      <div class="popup__container">
+        <form class="popup__form" action="#" name="user_profile">
+          <button type="button" aria-label="закрыть" class="popup__close popup__close_button_profile"
+            name="close_editprofile"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__input popup__input_item_name" name="name" type="text" value="" />
+          <input class="popup__input popup__input_item_job" name="job" type="text" value="" />
+          <button class="popup__button" type="submit" aria-label="сохранить">
+            Сохранить
           </button>
-        </section>
-        <section class="elements">
-          <!--<figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
-              alt="Фото старого храма"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Карачаево-Черкессия</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>
-          <figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/elbrus.png"
-              alt="Фото гора в далеке"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Гора Эльбрус</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>
-          <figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/dombay.png"
-              alt="Фото вершина горы"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Домбай</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>
-          <figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/rosahutor.png"
-              alt="Фото Роза Хутор"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Роза Хутор</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>
-          <figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/krum.png"
-              alt="Фото крым облака в горах"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Крым</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>
-          <figure class="element">
-            <button class="element__delete" type="button" aria-label="удалить"></button>
-            <img
-              class="element__image"
-              src="./images/Altay.png"
-              alt="Фото гор из долины"
-            />
-            <figcaption class="element__caption">
-              <h2 class="element__text">Республика Алтай</h2>
-              <button
-                class="element__like"
-                type="button"
-                aria-label="лайк"
-              ></button>
-            </figcaption>
-          </figure>-->
-        </section>
-      </main>
-      <footer class="footer">
-        <p class="footer__text">© 2022 Mesto Russia</p>
-      </footer>
-      <div class="popup popup_profile">
-        <div class="popup__container">
-          <form class="popup__form" action="#" name="user_profile">
-            <button
-              type="button"
-              aria-label="закрыть"
-              class="popup__close popup__close_button_profile"
-              name="close_editprofile"
-            ></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              class="popup__input popup__input_item_name"
-              name="name"
-              type="text"
-              value=""
-            />
-            <input
-              class="popup__input popup__input_item_job"
-              name="job"
-              type="text"
-              value=""
-            />
-            <button class="popup__button" type="submit" aria-label="сохранить">
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="popup popup_cards">
-        <div class="popup__container">
-          <form class="popup__form popup__form-add" action="#" name="add_cards">
-            <button
-              type="button"
-              aria-label="закрыть"
-              class="popup__close popup__close_button_cards"
-            ></button>
-            <h2 class="popup__title">Новое место</h2>
-            <input
-              class="popup__input popup__input_item_name-mesto"
-              name="name-mesto"
-              type="text"
-              value=""
-              placeholder="Название"
-            />
-            <input
-              class="popup__input popup__input_item_link"
-              name="link"
-              type="text"
-              value=""
-              placeholder="Ссылка на картинку"
-            />
-            <button class="popup__button" type="submit" aria-label="Создать">
-              Создать
-            </button>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
-      <template id="element_template">
-        <figure class="element">
-          <button class="element__delete" type="button" aria-label="удалить"></button>
-          <img
-            class="element__image"
-            src=""
-            alt="Фото старого храма"
-          />
-          <figcaption class="element__caption">
-            <h2 class="element__text"></h2>
-            <button
-              class="element__like"
-              type="button"
-              aria-label="лайк"
-            ></button>
-          </figcaption>
-        </figure>
-      </template>
-    <script async src="./script/index.js"></script>
-  </body>
+    <div class="popup popup_cards">
+      <div class="popup__container">
+        <form class="popup__form popup__form-add" action="#" name="add_cards">
+          <button type="button" aria-label="закрыть" class="popup__close popup__close_button_cards"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <input class="popup__input popup__input_item_name-mesto" name="name-mesto" type="text" value=""
+            placeholder="Название" />
+          <input class="popup__input popup__input_item_link" name="link" type="text" value=""
+            placeholder="Ссылка на картинку" />
+          <button class="popup__button" type="submit" aria-label="Создать">
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_photofull">
+      <figure class="popup__container-photofull">
+        <button type="button" aria-label="закрыть" class="popup__close popup__close_button_open-card"></button>
+        <img class="popup__fullscreen" src="" alt="">
+        <figcaption class="popup__title-mesto"></figcaption>
+      </figure>
+    </div>
+  </div>
+  <template id="element_template">
+    <figure class="element">
+      <button class="element__delete" type="button" aria-label="удалить"></button>
+      <img class="element__image" src="" alt="Фото старого храма" />
+      <figcaption class="element__caption">
+        <h2 class="element__text"></h2>
+        <button class="element__like" type="button" aria-label="лайк"></button>
+      </figcaption>
+    </figure>
+  </template>
+  <script async src="./script/index.js"></script>
+</body>
+
 </html>

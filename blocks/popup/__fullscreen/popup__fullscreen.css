@@ -1,0 +1,6 @@
+.popup__fullscreen {
+    display: block;
+    object-fit: cover;
+    max-width: 65vw;
+    max-height: 65vh;
+}

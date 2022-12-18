@@ -1,0 +1,6 @@
+.popup__container-photofull {
+    display: flex;
+    flex-direction: column;
+    max-width: 75vw;
+    max-height: 75vh;
+}
