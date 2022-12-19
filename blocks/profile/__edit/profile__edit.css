@@ -7,7 +7,7 @@
   border: white;
   width: 24px;
   height: 24px;
-  cursor: url(../../../images/Pointer.svg), pointer;
+  cursor: pointer;
   transition: opacity .3s ease;
 }
 
