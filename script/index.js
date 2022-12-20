@@ -3,7 +3,7 @@ const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
 const popupOpenCards = document.querySelector('.profile__add-button');
 /** найти селектор блока popup */
-const popup = document.querySelector('.popup');
+const popup = document.querySelectorAll('.popup');
 /** найти селектор блока popup__add */
 const popupCards = document.querySelector('.popup_cards');
 /** найти селектор блока popup_photofull */
@@ -59,10 +59,11 @@ const createElement = ({name, link}) => {
 containerElement.append(...initialCards.map(createElement));
     
 /** добавляем модификатор popup_opened для открытия popup_profile */
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
+function openPopup(index) {
+    popup[index].classList.toggle('popup_opened');    
    
 }
+
 /** В popup_profile добавляем значения из блока profile */
 function openPropfilePopup() { 
   valueName.value = profileName.textContent;
@@ -70,9 +71,9 @@ function openPropfilePopup() {
   } 
 
 /** добавляем модификатор popup_opened для открытия popup_cards */
-function openPopupCards() {
-    popupCards.classList.add('popup_opened');
-}
+//function openPopupCards() {
+//   popupCards.classList.add('popup_opened');
+//}
 /** popup_photofull заполяем данными карточки {name, link} */
 const openImagePopup = ({name, link}) => {
     //document.querySelector('.popup__title-mesto').textContent = name;
@@ -83,7 +84,7 @@ const openImagePopup = ({name, link}) => {
 
 
 /** удаляем модификатор popup_opened у popup для закрытия */
-function closePopup() {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
     
 }
@@ -108,20 +109,22 @@ const name = document.querySelector('.popup__input_item_name-mesto').value;
 /** найти input в форме добавить место с классом .popup__input_item_link*/
 const link = document.querySelector('.popup__input_item_link').value;
   containerElement.prepend(createElement({name, link}))
-  closePopup()
+  closePopup(popup)
   popupFormCards.reset();
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
-popupOpenEdit.addEventListener('click', openPopup(popup));
+popupOpenEdit.addEventListener('click', ()=> openPopup(0), openPropfilePopup());
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
-popupOpenCards.addEventListener('click', openPopupCards);
+popupOpenCards.addEventListener('click', ()=> openPopup(1));
 /** слушаем кнопки закрыть форму popupCloseProfile */
 buttonCloseList.forEach(btn => {
-  const popup = btn.closest('popup');
+  const popup = btn.closest('.popup');
   btn.addEventListener('click', () => closePopup(popup)); 
 }) 
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup); 
 /** слушаем отправку формы по событию 'submit' */
 popupFormCards.addEventListener('submit', saveCard);
+
+
