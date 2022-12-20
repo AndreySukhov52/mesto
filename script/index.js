@@ -3,11 +3,9 @@ const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
 const popupOpenCards = document.querySelector('.profile__add-button');
 /** найти селектор блока popup */
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 /** найти селектор блока popup__add */
-const popupCards = document.querySelector('.popup_cards');
-/** найти селектор блока popup_photofull */
-//const popupCardImage = document.querySelector('.popup_photofull');
+const popup = document.querySelector('.popup');
 /** найти форму редактировать профиль */
 const popupFormProfile = document.forms.user_profile;
 /** найти форму добавить место */
@@ -27,9 +25,9 @@ const containerElement = document.querySelector('.elements');
 /** найти элемент с id #element_template и записать в переменную template */
 const template = document.querySelector('#element_template');
 /** найти input в форме добавить место с классом .popup__input_item_name-mesto*/
-const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
+//const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
-const inputItemLink = document.querySelector('.popup__input_item_link');
+//const inputItemLink = document.querySelector('.popup__input_item_link');
 
 
 /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
@@ -60,33 +58,30 @@ containerElement.append(...initialCards.map(createElement));
     
 /** добавляем модификатор popup_opened для открытия popup_profile */
 function openPopup(index) {
-    popup[index].classList.toggle('popup_opened');    
-   
+    popups[index].classList.toggle('popup_opened');    
 }
+
+  /** удаляем модификатор popup_opened у popup для закрытия */
+  function closePopup(index) {
+    popups[index].classList.remove('popup_opened');
+      
+  }
 
 /** В popup_profile добавляем значения из блока profile */
 function openPropfilePopup() { 
   valueName.value = profileName.textContent;
   valueJob.value = profileAbout.textContent;  
   } 
-
+  
 /** добавляем модификатор popup_opened для открытия popup_cards */
 //function openPopupCards() {
 //   popupCards.classList.add('popup_opened');
 //}
 /** popup_photofull заполяем данными карточки {name, link} */
 const openImagePopup = ({name, link}) => {
-    //document.querySelector('.popup__title-mesto').textContent = name;
-    //document.querySelector('.popup__fullscreen').src = link;
-    const mesto = document.querySelector('.popup__title-mesto').textContent = name;
-    const linkMesto = document.querySelector('.popup__fullscreen').src = link;
-}
-
-
-/** удаляем модификатор popup_opened у popup для закрытия */
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-    
+    document.querySelector('.popup__title-mesto').textContent = name;
+    document.querySelector('.popup__fullscreen').src = link;
+    openPopup(2);
 }
 
 /** функция сохранения данных */
@@ -97,7 +92,7 @@ function saveValuePopup(evt) {
     profileName.textContent = valueName.value;
     /** записать текст из value переменной valueJob */         
     profileAbout.textContent = valueJob.value;
-    closePopup();
+    closePopup(0);
 };
 
 /** функция создания элемента по данным из формы */
@@ -109,7 +104,7 @@ const name = document.querySelector('.popup__input_item_name-mesto').value;
 /** найти input в форме добавить место с классом .popup__input_item_link*/
 const link = document.querySelector('.popup__input_item_link').value;
   containerElement.prepend(createElement({name, link}))
-  closePopup(popup)
+  closePopup(1)
   popupFormCards.reset();
 };
 
