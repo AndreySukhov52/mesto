@@ -2,9 +2,9 @@
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
 const popupOpenCards = document.querySelector('.profile__add-button');
-/** найти селектор блока popup */
+/** найти селекторы блоков popup */
 const popups = document.querySelectorAll('.popup');
-/** найти селектор блока popup__add */
+/** найти селектор блока popup */
 const popup = document.querySelector('.popup');
 /** найти форму редактировать профиль */
 const popupFormProfile = document.forms.user_profile;
@@ -25,9 +25,9 @@ const containerElement = document.querySelector('.elements');
 /** найти элемент с id #element_template и записать в переменную template */
 const template = document.querySelector('#element_template');
 /** найти input в форме добавить место с классом .popup__input_item_name-mesto*/
-//const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
+const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
-//const inputItemLink = document.querySelector('.popup__input_item_link');
+const inputItemLink = document.querySelector('.popup__input_item_link');
 
 
 /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
@@ -64,7 +64,10 @@ function openPopup(index) {
   /** удаляем модификатор popup_opened у popup для закрытия */
   function closePopup(index) {
     popups[index].classList.remove('popup_opened');
-      
+  }
+
+  function closePopups(popup) {
+    popup.classList.remove('popup_opened');
   }
 
 /** В popup_profile добавляем значения из блока profile */
@@ -73,10 +76,6 @@ function openPropfilePopup() {
   valueJob.value = profileAbout.textContent;  
   } 
   
-/** добавляем модификатор popup_opened для открытия popup_cards */
-//function openPopupCards() {
-//   popupCards.classList.add('popup_opened');
-//}
 /** popup_photofull заполяем данными карточки {name, link} */
 const openImagePopup = ({name, link}) => {
     document.querySelector('.popup__title-mesto').textContent = name;
@@ -99,10 +98,10 @@ function saveValuePopup(evt) {
 function saveCard(evt) {
   /** Эта строчка отменяет стандартную отправку формы. */
   evt.preventDefault();
-  /** найти input в форме добавить место с классом .popup__input_item_name-mesto*/
-const name = document.querySelector('.popup__input_item_name-mesto').value;
-/** найти input в форме добавить место с классом .popup__input_item_link*/
-const link = document.querySelector('.popup__input_item_link').value;
+  /** найти input значение value */
+const name = inputNameMesto.value;
+/** найти input значение value */
+const link = inputItemLink.value;
   containerElement.prepend(createElement({name, link}))
   closePopup(1)
   popupFormCards.reset();
@@ -115,7 +114,7 @@ popupOpenCards.addEventListener('click', ()=> openPopup(1));
 /** слушаем кнопки закрыть форму popupCloseProfile */
 buttonCloseList.forEach(btn => {
   const popup = btn.closest('.popup');
-  btn.addEventListener('click', () => closePopup(popup)); 
+  btn.addEventListener('click', () => closePopups(popup)); 
 }) 
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup); 
