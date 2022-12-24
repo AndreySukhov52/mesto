@@ -2,10 +2,12 @@
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
 const popupOpenCards = document.querySelector('.profile__add-button');
-/** найти селекторы блоков popup */
-const popups = document.querySelectorAll('.popup');
-/** найти селектор блока popup */
-const popup = document.querySelector('.popup');
+/** найти селектор popup профиля */
+const popupProfile = document.querySelector('.popup_profile');
+/** найти селектор блока popup_cards */
+const popupCards = document.querySelector('.popup_cards');
+/** найти селектор блока popup_photofull */
+const popupPhotofull = document.querySelector('.popup_photofull');
 /** найти форму редактировать профиль */
 const popupFormProfile = document.forms.user_profile;
 /** найти форму добавить место */
@@ -24,6 +26,10 @@ const valueJob = document.querySelector('.popup__input_item_job');
 const containerElement = document.querySelector('.elements');
 /** найти элемент с id #element_template и записать в переменную template */
 const template = document.querySelector('#element_template');
+/** найти элемент с классом .popup__title-mesto */
+const titleMesto = document.querySelector('.popup__title-mesto');
+/** найти элемент с классом .popup__fullscreen */
+const fullscreen = document.querySelector('.popup__fullscreen');
 /** найти input в форме добавить место с классом .popup__input_item_name-mesto*/
 const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
@@ -47,7 +53,7 @@ const createElement = ({name, link}) => {
     );
     /** функция открытия popup для просомтра картинки */
     element.querySelector('.element__image').addEventListener('click', () =>  {
-      openImagePopup({name, link})
+      openImagePopup({name, link});
     });
     /** возвращаем element */
     return element;
@@ -56,31 +62,29 @@ const createElement = ({name, link}) => {
 /** создаем элементы при загрузке страницы из данных массива initialCards */
 containerElement.append(...initialCards.map(createElement));
     
-/** добавляем модификатор popup_opened для открытия popup_profile */
-function openPopup(index) {
-    popups[index].classList.toggle('popup_opened');    
+/** добавляем модификатор popup_opened для открытия popup */
+function openPopup(popup) {
+    popup.classList.add('popup_opened');    
 }
 
   /** удаляем модификатор popup_opened у popup для закрытия */
-  function closePopup(index) {
-    popups[index].classList.remove('popup_opened');
-  }
-
-  function closePopups(popup) {
+  function closePopup(popup) {
     popup.classList.remove('popup_opened');
   }
 
 /** В popup_profile добавляем значения из блока profile */
 function openPropfilePopup() { 
   valueName.value = profileName.textContent;
-  valueJob.value = profileAbout.textContent;  
+  valueJob.value = profileAbout.textContent;
+  openPopup(popupProfile);  
   } 
   
 /** popup_photofull заполяем данными карточки {name, link} */
 const openImagePopup = ({name, link}) => {
-    document.querySelector('.popup__title-mesto').textContent = name;
-    document.querySelector('.popup__fullscreen').src = link;
-    openPopup(2);
+    titleMesto.textContent = name;
+    fullscreen.src = link;
+    fullscreen.alt = name;
+    openPopup(popupPhotofull);
 }
 
 /** функция сохранения данных */
@@ -91,7 +95,7 @@ function saveValuePopup(evt) {
     profileName.textContent = valueName.value;
     /** записать текст из value переменной valueJob */         
     profileAbout.textContent = valueJob.value;
-    closePopup(0);
+    closePopup(popupProfile);
 };
 
 /** функция создания элемента по данным из формы */
@@ -102,20 +106,20 @@ function saveCard(evt) {
 const name = inputNameMesto.value;
 /** найти input значение value */
 const link = inputItemLink.value;
-  containerElement.prepend(createElement({name, link}))
-  closePopup(1)
+  containerElement.prepend(createElement({name, link}));
+  closePopup(popupCards);
   popupFormCards.reset();
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
-popupOpenEdit.addEventListener('click', ()=> openPopup(0), openPropfilePopup());
+popupOpenEdit.addEventListener('click', () => openPropfilePopup());
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
-popupOpenCards.addEventListener('click', ()=> openPopup(1));
+popupOpenCards.addEventListener('click', () => openPopup(popupCards));
 /** слушаем кнопки закрыть форму popupCloseProfile */
 buttonCloseList.forEach(btn => {
   const popup = btn.closest('.popup');
-  btn.addEventListener('click', () => closePopups(popup)); 
-}) 
+  btn.addEventListener('click', () => closePopup(popup)); 
+}); 
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup); 
 /** слушаем отправку формы по событию 'submit' */
