@@ -1,3 +1,11 @@
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
 /** найти кнопку рекадтировать профиль */
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
@@ -126,3 +134,4 @@ popupFormProfile.addEventListener('submit', saveValuePopup);
 popupFormCards.addEventListener('submit', saveCard);
 
 
+enableValidation(validationConfig);

@@ -43,10 +43,12 @@
         <button type="button" aria-label="закрыть" class="popup__close popup__close_button_profile"
             name="close_editprofile"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" action="#" name="user_profile">
-          <input class="popup__input popup__input_item_name" name="name" type="text" value="" />
-          <input class="popup__input popup__input_item_job" name="job" type="text" value="" />
-          <button class="popup__button" type="submit" aria-label="сохранить">
+        <form class="popup__form" action="#" name="user_profile" novalidate>
+          <input class="popup__input popup__input_item_name" name="name" id="name" type="text" value="" minlength="2" maxlength="40" required/>
+          <span class="name-error popup__input-error"></span>
+          <input class="popup__input popup__input_item_job" name="job" id="job" type="text" value="" minlength="2" maxlength="200" required/>
+          <span class="job-error popup__input-error"></span>
+          <button class="popup__button popup__button_disabled" type="submit" aria-label="сохранить">
             Сохранить
           </button>
         </form>
@@ -56,11 +58,13 @@
       <div class="popup__container">
         <button type="button" aria-label="закрыть" class="popup__close popup__close_button_cards"></button>
           <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form-add" action="#" name="add_cards">
-          <input class="popup__input popup__input_item_name-mesto" name="name-mesto" type="text" value=""
-            placeholder="Название" />
-          <input class="popup__input popup__input_item_link" name="link" type="text" value=""
-            placeholder="Ссылка на картинку" />
+        <form class="popup__form popup__form-add" action="#" name="add_cards" novalidate>
+          <input class="popup__input popup__input_item_name-mesto" name="name-mesto" id="name-mesto" type="text" value=""
+            placeholder="Название" minlength="2" maxlength="30" required/>
+            <span class="name-mesto-error popup__input-error"></span>
+          <input class="popup__input popup__input_item_link" name="link" id="link" type="url" value=""
+            placeholder="Ссылка на картинку" required/>
+            <span class="link-error popup__input-error"></span>
           <button class="popup__button" type="submit" aria-label="Создать">
             Создать
           </button>
@@ -85,7 +89,9 @@
       </figcaption>
     </figure>
   </template>
+  
   <script src="./script/cards.js"></script>
+  <script src="./script/validate.js"></script>
   <script src="./script/index.js"></script>
 </body>
 
