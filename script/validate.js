@@ -30,7 +30,7 @@ function setEventListeners(formElement, config) {
     })
 }
 
-  function enableValidation(config) {
+function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
 
     formList.forEach((formElement, config) => {
