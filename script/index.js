@@ -7,7 +7,7 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 };
 /** найти все popup */
-const popups = document.querySelectorAll('.popup'); 
+const popups = document.querySelectorAll('.popup');
 /** найти кнопку рекадтировать профиль */
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
@@ -22,8 +22,6 @@ const popupPhotofull = document.querySelector('.popup_photofull');
 const popupFormProfile = document.forms.user_profile;
 /** найти форму добавить место */
 const popupFormCards = document.forms.add_cards;
-/** найти кнопку закрыть в форме. */ 
-const buttonCloseList = document.querySelectorAll('.popup__close');
 /** найти элемент с классом .profile__name и записать в переменную profileName */
 const profileName = document.querySelector('.profile__name');
 /** найти элемент с классом .profile__about-me и записать в переменную profileAbout */
@@ -47,27 +45,27 @@ const inputItemLink = document.querySelector('.popup__input_item_link');
 
 
 /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
-const createElement = ({name, link}) => {
-    const element = template.content.querySelector('.element').cloneNode(true);
-    const elementImg = element.querySelector('.element__image');
-    elementImg.src = link;
-    elementImg.alt = name;
-    element.querySelector('.element__text').textContent = name;
-    /** функция удаления элемента по кнопке .element__delete */
-    element.querySelector('.element__delete').addEventListener('click', () => {
-        element.remove();
-    });
-    /** функция активации лайка по кнопке */
-    element.querySelector('.element__like').addEventListener('click', (e) => 
+const createElement = ({ name, link }) => {
+  const element = template.content.querySelector('.element').cloneNode(true);
+  const elementImg = element.querySelector('.element__image');
+  elementImg.src = link;
+  elementImg.alt = name;
+  element.querySelector('.element__text').textContent = name;
+  /** функция удаления элемента по кнопке .element__delete */
+  element.querySelector('.element__delete').addEventListener('click', () => {
+    element.remove();
+  });
+  /** функция активации лайка по кнопке */
+  element.querySelector('.element__like').addEventListener('click', (e) =>
     e.target.classList.toggle('element__like_activ')
-    );
-    /** функция открытия popup для просомтра картинки */
-    element.querySelector('.element__image').addEventListener('click', () =>  {
-      openImagePopup({name, link});
-    });
-    /** возвращаем element */
-    return element;
-    };
+  );
+  /** функция открытия popup для просомтра картинки */
+  element.querySelector('.element__image').addEventListener('click', () => {
+    openImagePopup({ name, link });
+  });
+  /** возвращаем element */
+  return element;
+};
 
 /** создаем элементы при загрузке страницы из данных массива initialCards */
 containerElement.append(...initialCards.map(createElement));
@@ -83,53 +81,53 @@ function closeByEsc(evt) {
 /** закрытие попап кликом на темный фон и кнопку закрытия */
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
-  const targetClassList = evt.target.classList;
-  if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) {
-    closePopup(popup);
-  }
-  }) 
-}) 
-    
+    const targetClassList = evt.target.classList;
+    if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) {
+      closePopup(popup);
+    }
+  })
+})
+
 /** добавляем модификатор popup_opened для открытия popup */
 function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    /** добавляем слушатель при открытии попап */
-    document.addEventListener('keydown', closeByEsc);    
+  popup.classList.add('popup_opened');
+  /** добавляем слушатель при открытии попап */
+  document.addEventListener('keydown', closeByEsc);
 }
 
-  /** удаляем модификатор popup_opened у popup для закрытия */
-  function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    /** удаляем слушатель при закрытии попап */
-    document.removeEventListener('keydown', closeByEsc);
-  }
+/** удаляем модификатор popup_opened у popup для закрытия */
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  /** удаляем слушатель при закрытии попап */
+  document.removeEventListener('keydown', closeByEsc);
+}
 
 /** В popup_profile добавляем значения из блока profile */
-function openPropfilePopup() { 
+function openPropfilePopup() {
   valueName.value = profileName.textContent;
   valueJob.value = profileAbout.textContent;
   /** валидация формы */
-  enableValidation(validationConfig);
-  openPopup(popupProfile);  
-  } 
   
+  openPopup(popupProfile);
+}
+
 /** popup_photofull заполяем данными карточки {name, link} */
-const openImagePopup = ({name, link}) => {
-    titleMesto.textContent = name;
-    fullscreen.src = link;
-    fullscreen.alt = name;
-    openPopup(popupPhotofull);
+const openImagePopup = ({ name, link }) => {
+  titleMesto.textContent = name;
+  fullscreen.src = link;
+  fullscreen.alt = name;
+  openPopup(popupPhotofull);
 }
 
 /** функция сохранения данных */
 function saveValuePopup(evt) {
-    /** Эта строчка отменяет стандартную отправку формы. */
-    evt.preventDefault();
-    /** записать текст из value переменной valueName */ 
-    profileName.textContent = valueName.value;
-    /** записать текст из value переменной valueJob */         
-    profileAbout.textContent = valueJob.value;
-    closePopup(popupProfile);
+  /** Эта строчка отменяет стандартную отправку формы. */
+  evt.preventDefault();
+  /** записать текст из value переменной valueName */
+  profileName.textContent = valueName.value;
+  /** записать текст из value переменной valueJob */
+  profileAbout.textContent = valueJob.value;
+  closePopup(popupProfile);
 };
 
 /** функция создания элемента по данным из формы */
@@ -137,27 +135,20 @@ function saveCard(evt) {
   /** Эта строчка отменяет стандартную отправку формы. */
   evt.preventDefault();
   /** найти input значение value */
-const name = inputNameMesto.value;
-/** найти input значение value */
-const link = inputItemLink.value;
-  containerElement.prepend(createElement({name, link}));
+  const name = inputNameMesto.value;
+  /** найти input значение value */
+  const link = inputItemLink.value;
+  containerElement.prepend(createElement({ name, link }));
   closePopup(popupCards);
   popupFormCards.reset();
-  /** валидация формы */
-  enableValidation(validationConfig);
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
 popupOpenEdit.addEventListener('click', () => openPropfilePopup());
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
 popupOpenCards.addEventListener('click', () => openPopup(popupCards));
-/** слушаем кнопки закрыть форму popupCloseProfile */
-buttonCloseList.forEach(btn => {
-  const popup = btn.closest('.popup');
-  btn.addEventListener('click', () => closePopup(popup)); 
-}); 
 /** слушаем отправку формы по событию 'submit' */
-popupFormProfile.addEventListener('submit', saveValuePopup); 
+popupFormProfile.addEventListener('submit', saveValuePopup);
 /** слушаем отправку формы по событию 'submit' */
 popupFormCards.addEventListener('submit', saveCard);
 

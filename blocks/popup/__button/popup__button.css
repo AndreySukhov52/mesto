@@ -1,6 +1,6 @@
 .popup__button {
   all: unset;
-  margin: 0 36px 37px;
+  margin: 10px 36px 37px;
   color: #ffffff;
   background: #000000;
   border-radius: 2px;
@@ -21,7 +21,7 @@
   .popup__button {
     max-width: 238px;
     min-height: 46px;
-    margin: 0 22px 30px;
+    margin: 10px 22px 30px;
     font-size: 14px;
     line-height: 17px;
   }
