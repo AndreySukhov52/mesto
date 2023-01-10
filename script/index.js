@@ -5,7 +5,9 @@ const validationConfig = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-}; 
+};
+/** найти все popup */
+const popups = document.querySelectorAll('.popup'); 
 /** найти кнопку рекадтировать профиль */
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
@@ -69,21 +71,43 @@ const createElement = ({name, link}) => {
 
 /** создаем элементы при загрузке страницы из данных массива initialCards */
 containerElement.append(...initialCards.map(createElement));
+
+/** закрытие попап на клавишу ESC */
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
+/** закрытие попап кликом на темный фон и кнопку закрытия */
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+  const targetClassList = evt.target.classList;
+  if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) {
+    closePopup(popup);
+  }
+  }) 
+}) 
     
 /** добавляем модификатор popup_opened для открытия popup */
 function openPopup(popup) {
-    popup.classList.add('popup_opened');    
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEsc);    
 }
 
   /** удаляем модификатор popup_opened у popup для закрытия */
   function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEsc);
   }
 
 /** В popup_profile добавляем значения из блока profile */
 function openPropfilePopup() { 
   valueName.value = profileName.textContent;
   valueJob.value = profileAbout.textContent;
+  /** валидация формы */
+  enableValidation(validationConfig);
   openPopup(popupProfile);  
   } 
   
@@ -117,6 +141,8 @@ const link = inputItemLink.value;
   containerElement.prepend(createElement({name, link}));
   closePopup(popupCards);
   popupFormCards.reset();
+  /** валидация формы */
+  enableValidation(validationConfig);
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
@@ -133,6 +159,6 @@ popupFormProfile.addEventListener('submit', saveValuePopup);
 /** слушаем отправку формы по событию 'submit' */
 popupFormCards.addEventListener('submit', saveCard);
 
-
+/** валидация формы */
 enableValidation(validationConfig);
 

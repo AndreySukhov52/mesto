@@ -22,18 +22,38 @@ function checkInputValidity(formElement, inputElement, config) {
     }
   }
 
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => !inputElement.validity.valid);
+}
+
+function toggleButtonState(inputList, buttonElement, config) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+}  
+
 function setEventListeners(formElement, config) {
     const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const buttonElement = formElement.querySelector(config.submitButtonSelector);
+
+    toggleButtonState(inputList, buttonElement, config);
 
     inputList.forEach((inputElement) => {
-        checkInputValidity(formElement, inputElement, config);
+      inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement, config);
+      toggleButtonState(inputList, buttonElement, config);
+      })
     })
 }
 
 function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
 
-    formList.forEach((formElement, config) => {
+    formList.forEach((formElement) => {
         setEventListeners(formElement, config);
     })
   }
