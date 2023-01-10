@@ -93,12 +93,14 @@ popups.forEach((popup) => {
 /** добавляем модификатор popup_opened для открытия popup */
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    /** добавляем слушатель при открытии попап */
     document.addEventListener('keydown', closeByEsc);    
 }
 
   /** удаляем модификатор popup_opened у popup для закрытия */
   function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    /** удаляем слушатель при закрытии попап */
     document.removeEventListener('keydown', closeByEsc);
   }
 
