@@ -42,7 +42,10 @@ const fullscreen = document.querySelector('.popup__fullscreen');
 const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
 const inputItemLink = document.querySelector('.popup__input_item_link');
-
+/** найти кнопку с классом .popup__button_submit_addcard */
+const submitAddCard = document.querySelector('.popup__button_submit_addcard');
+/** найти кнопку с классом .popup__button_submit_saveprofile */
+const submitSaveProfile = document.querySelector('.popup__button_submit_saveprofile');
 
 /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
 const createElement = ({ name, link }) => {
@@ -106,8 +109,6 @@ function closePopup(popup) {
 function openPropfilePopup() {
   valueName.value = profileName.textContent;
   valueJob.value = profileAbout.textContent;
-  /** валидация формы */
-  
   openPopup(popupProfile);
 }
 
@@ -144,9 +145,19 @@ function saveCard(evt) {
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
-popupOpenEdit.addEventListener('click', () => openPropfilePopup());
+popupOpenEdit.addEventListener('click', () => {
+  openPropfilePopup();
+  /** удаляем класс у кнопки и атрибут disabled */
+  submitSaveProfile.classList.remove('popup__button_disabled');
+  submitSaveProfile.removeAttribute('disabled', 'disabled');
+});
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
-popupOpenCards.addEventListener('click', () => openPopup(popupCards));
+popupOpenCards.addEventListener('click', () => {
+  openPopup(popupCards);
+  /** добавляем класс кнопке и атрибут disabled */
+  submitAddCard.classList.add('popup__button_disabled');
+  submitAddCard.setAttribute('disabled', 'disabled');
+});
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup);
 /** слушаем отправку формы по событию 'submit' */
