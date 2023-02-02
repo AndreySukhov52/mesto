@@ -1,3 +1,9 @@
+import { Card } from './Card.js';
+import { initialCards } from "./cards.js";
+
+
+
+
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -43,32 +49,40 @@ const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
 const inputItemLink = document.querySelector('.popup__input_item_link');
 
-
-/** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
+/** функция создания элемента */
 const createElement = ({ name, link }) => {
-  const element = template.content.querySelector('.element').cloneNode(true);
-  const elementImg = element.querySelector('.element__image');
-  elementImg.src = link;
-  elementImg.alt = name;
-  element.querySelector('.element__text').textContent = name;
-  /** функция удаления элемента по кнопке .element__delete */
-  element.querySelector('.element__delete').addEventListener('click', () => {
-    element.remove();
-  });
-  /** функция активации лайка по кнопке */
-  element.querySelector('.element__like').addEventListener('click', (e) =>
-    e.target.classList.toggle('element__like_activ')
-  );
-  /** функция открытия popup для просомтра картинки */
-  element.querySelector('.element__image').addEventListener('click', () => {
-    openImagePopup({ name, link });
-  });
-  /** возвращаем element */
+  const card = new Card({ name, link }, '#element_template');
+  const element = card.generateCard();
   return element;
 };
 
 /** создаем элементы при загрузке страницы из данных массива initialCards */
-containerElement.append(...initialCards.map(createElement));
+initialCards.forEach((element) => {
+  containerElement.prepend(createElement(element));
+});
+
+// /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
+// const createElement = ({ name, link }) => {
+//   const element = template.content.querySelector('.element').cloneNode(true);
+//   const elementImg = element.querySelector('.element__image');
+//   elementImg.src = link;
+//   elementImg.alt = name;
+//   element.querySelector('.element__text').textContent = name;
+//   /** функция удаления элемента по кнопке .element__delete */
+//   element.querySelector('.element__delete').addEventListener('click', () => {
+//     element.remove();
+//   });
+//   /** функция активации лайка по кнопке */
+//   element.querySelector('.element__like').addEventListener('click', (e) =>
+//     e.target.classList.toggle('element__like_activ')
+//   );
+//   /** функция открытия popup для просомтра картинки */
+//   element.querySelector('.element__image').addEventListener('click', () => {
+//     openImagePopup({ name, link });
+//   });
+//   /** возвращаем element */
+//   return element;
+// };
 
 /** закрытие попап на клавишу ESC */
 function closeByEsc(evt) {
@@ -106,8 +120,6 @@ function closePopup(popup) {
 function openPropfilePopup() {
   valueName.value = profileName.textContent;
   valueJob.value = profileAbout.textContent;
-  /** валидация формы */
-  
   openPopup(popupProfile);
 }
 
@@ -153,5 +165,5 @@ popupFormProfile.addEventListener('submit', saveValuePopup);
 popupFormCards.addEventListener('submit', saveCard);
 
 /** валидация формы */
-enableValidation(validationConfig);
+//enableValidation(validationConfig);
 
