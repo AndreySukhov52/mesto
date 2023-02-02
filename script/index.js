@@ -1,8 +1,6 @@
 import { Card } from './Card.js';
 import { initialCards } from "./cards.js";
-
-
-
+import { FormValidator } from './FormValidator.js';
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -14,7 +12,7 @@ const validationConfig = {
 };
 /** найти все popup */
 const popups = document.querySelectorAll('.popup');
-/** найти кнопку рекадтировать профиль */
+/** найти кнопку редактировать профиль */
 const popupOpenEdit = document.querySelector('.profile__edit');
 /** найти кнопку добавить */
 const popupOpenCards = document.querySelector('.profile__add-button');
@@ -38,8 +36,6 @@ const valueName = document.querySelector('.popup__input_item_name');
 const valueJob = document.querySelector('.popup__input_item_job');
 /** найти элемент с классом .elements и записать в переменную containerElement */
 const containerElement = document.querySelector('.elements');
-/** найти элемент с id #element_template и записать в переменную template */
-const template = document.querySelector('#element_template');
 /** найти элемент с классом .popup__title-mesto */
 const titleMesto = document.querySelector('.popup__title-mesto');
 /** найти элемент с классом .popup__fullscreen */
@@ -48,6 +44,10 @@ const fullscreen = document.querySelector('.popup__fullscreen');
 const inputNameMesto = document.querySelector('.popup__input_item_name-mesto');
 /** найти input в форме добавить место с классом .popup__input_item_link*/
 const inputItemLink = document.querySelector('.popup__input_item_link');
+/** найти кнопку с классом .popup__button_submit_addcard */
+const submitAddCard = document.querySelector('.popup__button_submit_addcard');
+/** найти кнопку с классом .popup__button_submit_saveprofile */
+const submitSaveProfile = document.querySelector('.popup__button_submit_saveprofile');
 
 /** функция создания элемента */
 const createElement = ({ name, link }) => {
@@ -60,29 +60,6 @@ const createElement = ({ name, link }) => {
 initialCards.forEach((element) => {
   containerElement.prepend(createElement(element));
 });
-
-// /** функция создания элемента из шаблона фото с наименованием места и кнопкой лайк */
-// const createElement = ({ name, link }) => {
-//   const element = template.content.querySelector('.element').cloneNode(true);
-//   const elementImg = element.querySelector('.element__image');
-//   elementImg.src = link;
-//   elementImg.alt = name;
-//   element.querySelector('.element__text').textContent = name;
-//   /** функция удаления элемента по кнопке .element__delete */
-//   element.querySelector('.element__delete').addEventListener('click', () => {
-//     element.remove();
-//   });
-//   /** функция активации лайка по кнопке */
-//   element.querySelector('.element__like').addEventListener('click', (e) =>
-//     e.target.classList.toggle('element__like_activ')
-//   );
-//   /** функция открытия popup для просомтра картинки */
-//   element.querySelector('.element__image').addEventListener('click', () => {
-//     openImagePopup({ name, link });
-//   });
-//   /** возвращаем element */
-//   return element;
-// };
 
 /** закрытие попап на клавишу ESC */
 function closeByEsc(evt) {
@@ -124,7 +101,7 @@ function openPropfilePopup() {
 }
 
 /** popup_photofull заполяем данными карточки name, link */
-function openImagePopup( name, link ) {
+function openImagePopup(name, link) {
   titleMesto.textContent = name;
   fullscreen.src = link;
   fullscreen.alt = name;
@@ -156,14 +133,28 @@ function saveCard(evt) {
 };
 
 /** слушаем кнопку редактировать профиль .Profile__edit */
-popupOpenEdit.addEventListener('click', () => openPropfilePopup());
+popupOpenEdit.addEventListener('click', () => {
+  openPropfilePopup();
+  /** удаляем класс у кнопки и атрибут disabled */
+  submitSaveProfile.classList.remove('popup__button_disabled');
+  submitSaveProfile.removeAttribute('disabled', 'disabled');
+});
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
-popupOpenCards.addEventListener('click', () => openPopup(popupCards));
+popupOpenCards.addEventListener('click', () => {
+  openPopup(popupCards);
+  /** добавляем класс кнопке и атрибут disabled */
+  submitAddCard.classList.add('popup__button_disabled');
+  submitAddCard.setAttribute('disabled', 'disabled');
+});
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup);
 /** слушаем отправку формы по событию 'submit' */
 popupFormCards.addEventListener('submit', saveCard);
 
-/** валидация формы */
-//enableValidation(validationConfig);
+/** валидация формы профиля */
+const validatorProfileForm = new FormValidator(validationConfig, popupFormProfile);
+validatorProfileForm.enableValidation();
 
+/** валидация формы добавления карточки */
+const validatorAddCardForm = new FormValidator(validationConfig, popupFormCards);
+validatorAddCardForm.enableValidation();

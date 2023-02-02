@@ -10,7 +10,9 @@ class Card {
 
     /** метод создания разметки карточки из template  */
     _getTemplateCard() {
-        const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode(true);
+        const cardElement = document.querySelector(this._templateSelector).content
+            .querySelector('.element')
+            .cloneNode(true);
 
         return cardElement;
     }
