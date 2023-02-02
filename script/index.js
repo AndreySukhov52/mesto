@@ -51,7 +51,7 @@ const inputItemLink = document.querySelector('.popup__input_item_link');
 
 /** функция создания элемента */
 const createElement = ({ name, link }) => {
-  const card = new Card({ name, link }, '#element_template');
+  const card = new Card({ name, link }, '#element_template', openImagePopup);
   const element = card.generateCard();
   return element;
 };
@@ -123,8 +123,8 @@ function openPropfilePopup() {
   openPopup(popupProfile);
 }
 
-/** popup_photofull заполяем данными карточки {name, link} */
-const openImagePopup = ({ name, link }) => {
+/** popup_photofull заполяем данными карточки name, link */
+function openImagePopup( name, link ) {
   titleMesto.textContent = name;
   fullscreen.src = link;
   fullscreen.alt = name;

@@ -11,7 +11,7 @@ class Card {
     /** метод создания разметки карточки из template  */
     _getTemplateCard() {
         const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode(true);
-            
+
         return cardElement;
     }
 
@@ -50,7 +50,7 @@ class Card {
         this._likeButton = this._newCard.querySelector('.element__like');
         this._setData();
         this._setEventListeners();
-        
+
         return this._newCard;
     }
 };
