@@ -66,6 +66,28 @@ class FormValidator {
   enableValidation() {
     this._setEventListeners();
   };
+
+  /** метод отключает кнопку в форме добавления карточки при первом открытии */
+  disableAddCardPopupButton() {
+    this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = true;
+  };
+
+  /** метод активирует кнопку профиля при открытии попапа */
+  switchProfileButtonMode() {
+    this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = false;
+  };
+
+  /**  метод скрывает спаны с ошибкой и удаляет стили невалидных инпутов */
+  resetValidation() {
+    this._spanErrors.forEach((span) => {
+      span.textContent = '';
+    })
+    this._inputList.forEach((input) => {
+      input.classList.remove('popup__input_type_error');
+    })
+  };
 };
 
 export { FormValidator };

@@ -136,15 +136,15 @@ function saveCard(evt) {
 popupOpenEdit.addEventListener('click', () => {
   openPropfilePopup();
   /** удаляем класс у кнопки и атрибут disabled */
-  submitSaveProfile.classList.remove('popup__button_disabled');
-  submitSaveProfile.removeAttribute('disabled', 'disabled');
+  validatorProfileForm.resetValidation();
+  validatorProfileForm.switchProfileButtonMode();
 });
 /** слушаем кнопку добавить карточку с местом .profile__add-button */
 popupOpenCards.addEventListener('click', () => {
   openPopup(popupCards);
   /** добавляем класс кнопке и атрибут disabled */
-  submitAddCard.classList.add('popup__button_disabled');
-  submitAddCard.setAttribute('disabled', 'disabled');
+  validatorAddCardForm.resetValidation();
+  validatorAddCardForm.disableAddCardPopupButton();
 });
 /** слушаем отправку формы по событию 'submit' */
 popupFormProfile.addEventListener('submit', saveValuePopup);
