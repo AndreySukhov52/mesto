@@ -85,7 +85,7 @@ class FormValidator {
       span.textContent = '';
     })
     this._inputList.forEach((input) => {
-      input.classList.remove('popup__input_type_error');
+      input.classList.remove(this._config.inputErrorClass);
     })
   };
 };
