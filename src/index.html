@@ -8,18 +8,17 @@
   <meta name="author" content="Сухов Андрей" />
   <meta name="description" content="Разные места из России с фото" />
   <meta name="keywords" content="Место" />
-  <link rel="stylesheet" href="./pages/index.css" />
 </head>
 
 <body class="page">
   <div class="page__container">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo"/>
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__datablock">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар" />
+          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар"  class="profile__avatar"/>
           <div class="profile__info">
             <div class="profile__div">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -29,7 +28,7 @@
           </div>
         </div>
         <button type="button" aria-label="добавить" class="profile__add-button">
-          <img class="profile__button-image" src="./images/Vector.svg" alt="крестик на кнопке" />
+          <img class="profile__button-image" src="<%=require('./images/Vector.svg')%>" alt="крестик на кнопке" />
         </button>
       </section>
       <section class="elements">
@@ -91,7 +90,7 @@
       </figcaption>
     </figure>
   </template>
-  <script type="module" src="./script/index.js" defer></script>
+ 
 </body>
 
 </html>

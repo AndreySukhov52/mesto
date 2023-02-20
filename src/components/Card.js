@@ -1,12 +1,12 @@
 /** класс Card  */
-class Card {
+export default class Card {
     /** конструктор класса  */
-    constructor(data, templateSelector, fullScreenCard) {
-        this._name = data.name;
+    constructor(data, handleCardClick, templateSelector) {
+        this._title = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._openFullScreenCard = fullScreenCard;
-    }
+        this._handleCardClick = handleCardClick;
+    };
 
     /** метод создания разметки карточки из template  */
     _getTemplateCard() {
@@ -15,25 +15,25 @@ class Card {
             .cloneNode(true);
 
         return cardElement;
-    }
+    };
 
     /** метод заполнения карточки данными  */
-    _setData() {
-        this._newCard.querySelector('.element__text').textContent = this._name;
-        this._newCard.querySelector('.element__image').src = this._link;
-        this._newCard.querySelector('.element__image').alt = this._name;
-    }
+    //_setData() {
+    //    this._newCard.querySelector('.element__text').textContent = this._title;
+    //    this._newCard.querySelector('.element__image').src = this._link;
+    //    this._newCard.querySelector('.element__image').alt = this._title;
+    //};
 
     /** метод удаления карточки  */
     _deleteCard() {
         this._newCard.remove();
         this._newCard = null;
-    }
+    };
 
     /** метод активации лайка  */
     _clickLike() {
         this._likeButton.classList.toggle('element__like_activ');
-    }
+    };
 
     /** метод для установки слушателей  */
     _setEventListeners() {
@@ -41,8 +41,10 @@ class Card {
 
         this._likeButton.addEventListener('click', () => { this._clickLike() });
 
-        this._cardImage.addEventListener('click', () => { this._openFullScreenCard(this._name, this._link) });
-    }
+        this._cardImage.addEventListener('click', () => {
+            this._handleCardClick();
+        });
+    };
 
     /** метод создания карточки  */
     generateCard() {
@@ -50,13 +52,26 @@ class Card {
         this._cardImage = this._newCard.querySelector('.element__image');
         this._deleteButton = this._newCard.querySelector('.element__delete');
         this._likeButton = this._newCard.querySelector('.element__like');
-        this._setData();
+
+        //this._setData();
+        this._imageTitle = this._newCard.querySelector('.element__text');
+        this._imageTitle.textContent = this._title;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._title;
         this._setEventListeners();
 
         return this._newCard;
-    }
+    };
+
+    getCardName() {
+        return this._title;
+    };
+
+    getCardLink() {
+        return this._link;
+    };
+
 };
 
-export { Card };
 
 
