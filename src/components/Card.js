@@ -17,13 +17,6 @@ export default class Card {
         return cardElement;
     };
 
-    /** метод заполнения карточки данными  */
-    //_setData() {
-    //    this._newCard.querySelector('.element__text').textContent = this._title;
-    //    this._newCard.querySelector('.element__image').src = this._link;
-    //    this._newCard.querySelector('.element__image').alt = this._title;
-    //};
-
     /** метод удаления карточки  */
     _deleteCard() {
         this._newCard.remove();
