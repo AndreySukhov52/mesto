@@ -45,9 +45,8 @@ export default class Card {
         this._cardImage = this._newCard.querySelector('.element__image');
         this._deleteButton = this._newCard.querySelector('.element__delete');
         this._likeButton = this._newCard.querySelector('.element__like');
-
-        //this._setData();
         this._imageTitle = this._newCard.querySelector('.element__text');
+        
         this._imageTitle.textContent = this._title;
         this._cardImage.src = this._link;
         this._cardImage.alt = this._title;
