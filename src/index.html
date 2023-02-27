@@ -19,6 +19,9 @@
       <section class="profile">
         <div class="profile__datablock">
           <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар"  class="profile__avatar"/>
+          <button class="profile__edit-avatar" type="button">
+            <img src="<%=require('./images/pen.svg')%>" alt="изображение письменной ручки" class="profile__edit-pen"/>
+          </button>
           <div class="profile__info">
             <div class="profile__div">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -31,6 +34,7 @@
           <img class="profile__button-image" src="<%=require('./images/Vector.svg')%>" alt="крестик на кнопке" />
         </button>
       </section>
+
       <section class="elements">
       </section>
     </main>
@@ -72,6 +76,36 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup_type_update-avatar">
+      <div class="popup__container">
+        <button class="popup__close" aria-label="закрыть" type="button"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form popup__form-avatar" name="editAvatarForm" id="editAvatarForm" novalidate>
+                      <input id="nameInputAvatar"
+              class="popup__input popup__input_link-avatar"
+              name="avatar"
+              type="url"
+              placeholder="Введите ссылку URL"
+              required
+            >
+            <span class="nameInputAvatar-error popup__input-error"></span>
+                  <button class="popup__button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Попап потверждение удаления элемента -->
+    <div class="popup popup_type_confirmation">
+      <div class="popup__container">
+        <button class="popup__close" aria-label="закрыть" type="button"></button>
+        <h2 class="popup__title popup__title_margin">Вы уверены?</h2>
+        <form class="popup__form">
+          <button class="popup__button popup__save_margin" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+
     <div class="popup popup_photofull">
       <figure class="popup__container-photofull">
         <button type="button" aria-label="закрыть" class="popup__close popup__close_button_open-card"></button>
@@ -86,7 +120,10 @@
       <img class="element__image" src="#" alt="Фото место">
       <figcaption class="element__caption">
         <h2 class="element__text"></h2>
+        <div class="element__container-like">
         <button class="element__like" type="button" aria-label="лайк"></button>
+        <p class="element__count-like">2</p>
+          </div>
       </figcaption>
     </figure>
   </template>
