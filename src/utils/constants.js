@@ -30,14 +30,10 @@ export const buttonUpdateAvatar = document.querySelector('.profile__edit-avatar'
 export const nameInputEdit = document.querySelector('.popup__input_item_name');
 export const jobInputEdit = document.querySelector('.popup__input_item_job');
 
-
-
 /** найти форму редактировать профиль */
 //export const popupFormProfile = document.forms.user_profile;
 /** найти форму добавить место */
 //export const popupFormCards = document.forms.add_cards;
-
-
 /** найти элемент с классом .popup__title-mesto */
 //export const titleMesto = popupPhotofull.querySelector('.popup__title-mesto');
 /** найти элемент с классом .popup__fullscreen */

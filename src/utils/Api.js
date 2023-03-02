@@ -5,7 +5,6 @@ export class Api {
   }
 
   _handleSendingRequest(res) {
-    // (res.ok) ? Promise.resolve(res.json()) : Promise.reject(`Ошибка: ${res.status} ${res.statusText}`) ;
 
     if(res.ok) {
       return Promise.resolve(res.json())
@@ -31,8 +30,8 @@ export class Api {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          name: data.nameInput,
-          about: data.jobInput,
+          name: data.name,
+          about: data.job,
         })
       }
     )

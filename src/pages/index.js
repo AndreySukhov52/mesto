@@ -1,7 +1,6 @@
 import './index.css';
 
 import {
-  initialCards,
   validationConfig,
   popupOpenEdit,
   selectorPopupEditForm,
@@ -53,15 +52,6 @@ function createCard(value, template) {
   );
   return card.generateCard();
 };
-
-// const formNewCardFormValidation = new FormValidator(validationConfig, popupNewCard);
-// const profileFormValidation = new FormValidator(validationConfig, popupEditProfile);
-// const validatorFormUpdateAvatar = new FormValidator(validationConfig, popupUpdateAvatar);
-
-
-// validatorFormUpdateAvatar.enableValidation();
-// profileFormValidation.enableValidation();
-// formNewCardFormValidation.enableValidation();
 
 const userInfo = new UserInfo(selectorUserName, selectorUserAbout, avatarProfile);
 
