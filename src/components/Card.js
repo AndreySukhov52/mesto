@@ -1,69 +1,84 @@
 /** класс Card  */
-export default class Card {
+export class Card {
     /** конструктор класса  */
-    constructor(data, handleCardClick, templateSelector) {
-        this._title = data.name;
-        this._link = data.link;
-        this._templateSelector = templateSelector;
-        this._handleCardClick = handleCardClick;
+    constructor( value, template, handleCardClick, userId,
+      like, dislike, deleteCard) {
+      this._title = value.name;
+      this._link  = value.link;
+      this._likes = value.likes;
+      this._id = value._id;
+      this._ownerId = value.owner._id;
+      this._templateContainer = template;
+      this._handleCardClick = handleCardClick;
+      this._userId = userId;
+      this._like = like;
+      this._dislike = dislike;
+      this._deleteCard = deleteCard;
     };
-
+  
+    like() {
+      this._likeButton.classList.add("element__like_activ");
+    };
+  
+    dislike() {
+      this._likeButton.classList.remove("element__like_activ");
+    };
+  
+    _userLiked() {
+      this._likes.forEach((elementId) => {
+        if (elementId._id === this._userId) {
+          this.like();
+        } else {
+          this.dislike();
+        }
+      });
+    };
+  
+    likesCount(res) {
+      this._likesCount.textContent = `${res.likes.length}`;
+    };
+  
     /** метод создания разметки карточки из template  */
-    _getTemplateCard() {
-        const cardElement = document.querySelector(this._templateSelector).content
-            .querySelector('.element')
-            .cloneNode(true);
-
-        return cardElement;
+      _getTemplateElement() {
+      return document.querySelector(this._templateContainer).content.querySelector('.element').cloneNode(true);
     };
-
+  
+    /** метод активации лайка  */
+    _toggleLike(evt) {
+      evt.target.classList.toggle("element__like_activ");
+    };
+  
     /** метод удаления карточки  */
     _deleteCard() {
-        this._newCard.remove();
-        this._newCard = null;
+      this._cardElement.remove();
+      this._element = null;
     };
-
-    /** метод активации лайка  */
-    _clickLike() {
-        this._likeButton.classList.toggle('element__like_activ');
-    };
-
-    /** метод для установки слушателей  */
+  
+  /** метод для установки слушателей  */
     _setEventListeners() {
-        this._deleteButton.addEventListener('click', () => { this._deleteCard() });
-
-        this._likeButton.addEventListener('click', () => { this._clickLike() });
-
-        this._cardImage.addEventListener('click', () => {
-            this._handleCardClick();
-        });
+      this._cardElement.querySelector('.element__delete').addEventListener('click', ()=> this._deleteCard());
+      this._cardElement.querySelector('.element__like').addEventListener('mousedown', (evt)=> this._toggleLike(evt));
+      this._cardsElementImage.addEventListener('click', ()=> this._handleCardClick(this._link,  this._title));
     };
 
-    /** метод создания карточки  */
+  /** метод создания карточки  */
     generateCard() {
-        this._newCard = this._getTemplateCard();
-        this._cardImage = this._newCard.querySelector('.element__image');
-        this._deleteButton = this._newCard.querySelector('.element__delete');
-        this._likeButton = this._newCard.querySelector('.element__like');
-        this._imageTitle = this._newCard.querySelector('.element__text');
-        
-        this._imageTitle.textContent = this._title;
-        this._cardImage.src = this._link;
-        this._cardImage.alt = this._title;
-        this._setEventListeners();
-
-        return this._newCard;
+      this._cardElement = this._getTemplateElement();
+      this._cardsElementImage = this._cardElement.querySelector('.element__image');
+      this._cardsElementTitle = this._cardElement.querySelector('.element__text');
+      this._likeButton = this._cardElement.querySelector('.element__like');
+      this._countLikeElement = this._cardElement.querySelector('.element__count-like');
+      this._countLikeElement.textContent = this._likes.length
+  
+      this._setEventListeners();
+      this._userLiked();
+  
+      this._cardsElementImage.src = this._link;
+      this._cardsElementImage.alt = this._title;
+      this._cardsElementTitle.textContent = this._title;
+  
+      return this._cardElement;
     };
-
-    getCardName() {
-        return this._title;
-    };
-
-    getCardLink() {
-        return this._link;
-    };
-
-};
-
-
+  
+  };
 

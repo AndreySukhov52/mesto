@@ -1,38 +1,43 @@
-import { Popup } from '../components/Popup.js';
+import { Popup } from "./Popup";
 
-export default class PopupWithForm extends Popup {
-  constructor(selector, handleFormSubmit) {
-    super(selector);
-    this._handleFormSubmit = handleFormSubmit;
-    this._element = this._popup.querySelector('.popup__form');
-    this._inputList = this._element.querySelectorAll('.popup__input');
-  };
+export class PopupWithForm extends Popup {
+  constructor(popupSelector, submitForm) {
+    super(popupSelector);
+    this.submitForm = submitForm;
+    this._form = this._popup.querySelector('.popup__form');
+    this._inputs = [...this._form.querySelectorAll('.popup__input')];
+    this._form.addEventListener("submit", (event) => {
+      event.preventDefault()
+      const replacementText = event.submitter.textContent
+      event.submitter.textContent = "Сохранение..."
+      this.submitForm(this._getInputValues())
+        .then(() => this.close())
+        .finally(() => {
+          event.submitter.textContent = replacementText
+        })
+    })
+  }
 
   _getInputValues() {
-    this._formValues = {};
-    this._inputList.forEach(input => {
-      this._formValues[input.name] = input.value;
-    });
-    return this._formValues;
-  };
+    const values = {}
+    this._inputs.forEach((input) => {
+      values[input.name] = input.value
+    })
+    return values
+  }
 
-  setInputValues(data) {
-    this._inputList.forEach((input) => {
-      input.value = data[input.name];
-    });
-  };
+  close() {
+    this._form.reset()
+    super.close();
+  }
 
   setEventListeners() {
-    super.setEventListeners()
-    this._element.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-      this.closePopup();
-    });
-  };
+    super.setEventListeners();
+    this._form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.submitForm(this._getInputValues());
+    })
+  }
 
-  closePopup() {
-    super.closePopup();
-    this._element.reset();
-  };
-};
+
+}

@@ -1,27 +1,47 @@
-/** найти кнопку редактировать профиль */
-export const popupOpenEdit = document.querySelector('.profile__edit');
-/** найти кнопку добавить */
-export const popupOpenCards = document.querySelector('.profile__add-button');
-/** найти селектор popup профиля */
-export const selectorPopupEditForm = '.popup_profile';
-/** найти селектор блока popup_cards */
-export const selectorPopupCreateForm = '.popup_cards';
+export const template = '.element-template';
+/** найти элемент с классом .elements и записать в переменную containerElement */
+export const containerElement = '.elements';
 /** найти селектор блока popup_photofull */
-export const popupPhotofull = document.querySelector('.popup_photofull');
-/** найти форму редактировать профиль */
-export const popupFormProfile = document.forms.user_profile;
-/** найти форму добавить место */
-export const popupFormCards = document.forms.add_cards;
+export const popupPhotofull = '.popup_photofull';
+
 /** найти элемент с классом .profile__name и записать в переменную profileName */
 export const selectorUserName = '.profile__name';
 /** найти элемент с классом .profile__about-me и записать в переменную profileAbout */
 export const selectorUserAbout = '.profile__about-me';
-/** найти элемент с классом .elements и записать в переменную containerElement */
-export const containerElement = document.querySelector('.elements');
+/** найти элемент с классом .profile__avatar и записать в переменную popupAvatarProfile */
+export const avatarProfile = '.profile__avatar';
+
+/** найти селектор popup профиля */
+export const selectorPopupEditForm = '.popup_profile';
+/** найти селектор блока popup_cards */
+export const selectorPopupCreateForm = '.popup_cards';
+/** найти селектор popup update-avatar */
+export const popupUpdateAvatar = '.popup_type_update-avatar';
+/** найти селектор popup confirmation */
+export const popupConfirmationDelete = '.popup_type_confirmation';
+
+/** найти кнопку редактировать профиль */
+export const popupOpenEdit = document.querySelector('.profile__edit');
+/** найти кнопку добавить */
+export const popupOpenCards = document.querySelector('.profile__add-button');
+/** найти кнопку редактировать аватар */
+export const buttonUpdateAvatar = document.querySelector('.profile__edit-avatar');
+
+export const nameInputEdit = document.querySelector('.popup__input_item_name');
+export const jobInputEdit = document.querySelector('.popup__input_item_job');
+
+
+
+/** найти форму редактировать профиль */
+//export const popupFormProfile = document.forms.user_profile;
+/** найти форму добавить место */
+//export const popupFormCards = document.forms.add_cards;
+
+
 /** найти элемент с классом .popup__title-mesto */
-export const titleMesto = popupPhotofull.querySelector('.popup__title-mesto');
+//export const titleMesto = popupPhotofull.querySelector('.popup__title-mesto');
 /** найти элемент с классом .popup__fullscreen */
-export const fullscreen = popupPhotofull.querySelector('.popup__fullscreen');
+//export const fullscreen = popupPhotofull.querySelector('.popup__fullscreen');
 
 /** начальный массив */
 export const initialCards = [

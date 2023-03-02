@@ -2,17 +2,20 @@
   "name": "yandex.mesto",
   "version": "0.0.1",
   "description": "mesto",
-  "main": "./pages/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndreySukhov52/mesto.git"
   },
+  "keywords": [
+    ""
+  ],
   "author": "Andrey Sukhov",
   "license": "ISC",
   "homepage": "https://github.com/AndreySukhov52/mesto#readme",
@@ -34,6 +37,5 @@
   },
   "dependencies": {
     "core-js": "^3.28.0"
-  },
-  "keywords": []
+  }
 }
