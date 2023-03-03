@@ -51,12 +51,12 @@
           name="close_editprofile"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" action="#" name="user_profile" novalidate>
-          <input class="popup__input popup__input_item_name" name="name" id="name" type="text" value="" minlength="2"
+          <input class="popup__input popup__input_item_name" name="inputName" id="inputName" type="text" value="" minlength="2"
             maxlength="40" required />
-          <span class="name-error popup__input-error"></span>
-          <input class="popup__input popup__input_item_job" name="job" id="job" type="text" value="" minlength="2"
+          <span class="inputName-error popup__input-error"></span>
+          <input class="popup__input popup__input_item_job" name="inputAbout" id="inputAbout" type="text" value="" minlength="2"
             maxlength="200" required />
-          <span class="job-error popup__input-error"></span>
+          <span class="inputAbout-error popup__input-error"></span>
           <button class="popup__button popup__button_submit_saveprofile" type="submit" aria-label="сохранить">
             Сохранить
           </button>
@@ -69,13 +69,13 @@
         <button type="button" aria-label="закрыть" class="popup__close popup__close_button_cards"></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form-add" action="#" name="add_cards" novalidate>
-          <input class="popup__input popup__input_item_name-mesto" name="name" id="name-mesto" type="text" value=""
+          <input class="popup__input popup__input_item_name-mesto" name="inputNameCard" id="inputNameCard" type="text" value=""
             placeholder="Название" minlength="2" maxlength="30" required />
-          <span class="name-mesto-error popup__input-error"></span>
-          <input class="popup__input popup__input_item_link" name="link" id="link" type="url" value=""
+          <span class="inputNameCard-error popup__input-error"></span>
+          <input class="popup__input popup__input_item_link" name="inputUrlCard" id="inputUrlCard" type="url" value=""
             placeholder="Ссылка на картинку" required />
-          <span class="link-error popup__input-error"></span>
-          <button class="popup__button popup__button_submit_addcard" type="submit" aria-label="Создать">
+          <span class="inputUrlCard-error popup__input-error"></span>
+          <button class="popup__button popup__button_submit_addcard" type="submit" name="submitButton" aria-label="Создать">
             Создать
           </button>
         </form>
@@ -87,9 +87,9 @@
         <button class="popup__close" aria-label="закрыть" type="button"></button>
         <h2 class="popup__title">Обновить аватар</h2>
         <form class="popup__form popup__form-avatar" name="editAvatarForm" id="editAvatarForm" novalidate>
-          <input id="nameInputAvatar" class="popup__input popup__input_link-avatar" name="avatar" type="url"
+          <input class="popup__input popup__input_link-avatar" name="inputAvatarName" id="inputAvatarName" type="url"
             placeholder="Введите ссылку URL" required>
-          <span class="nameInputAvatar-error popup__input-error"></span>
+          <span class="inputAvatarName-error popup__input-error"></span>
           <button class="popup__button" type="submit">Сохранить</button>
         </form>
       </div>
