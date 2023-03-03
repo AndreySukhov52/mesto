@@ -1,13 +1,13 @@
 import Popup from './Popup.js'
 
 export default class PopupWithForm extends Popup {
-	constructor(popupSelector, handleFormSubmit) {
+	constructor(popupSelector, submitForm) {
 		super(popupSelector);
-		this._handleFormSubmit = handleFormSubmit;
-		this._popupForm = this._popupElement.querySelector('.popup__form');
+		this._submitForm = submitForm;
+		this._form = this._popupElement.querySelector('.popup__form');
 		this._inputs = this._popupElement.querySelectorAll('.popup__input');
 		this._submitButtonElement = this._popupElement.querySelector('.popup__button');
-	}
+	};
 
 	/** _getInputValues - приватный метод: собрать данные всех полей формы. */
 	_getInputValues() {
@@ -23,16 +23,17 @@ export default class PopupWithForm extends Popup {
 		super.setEventListeners();
 		this._popupElement.addEventListener('submit', (evt) => {
 			evt.preventDefault();
-			this._handleFormSubmit(this._getInputValues());
-		})
-	}
+			this._submitForm(this._getInputValues());
+		});
+	};
 
 	/** перезаписать родительский метод close */
 	close() {
 
-		this._popupForm.reset();
+		this._form.reset();
 		super.close();
-	}
+	};
+
 	/** изменить текст кнопки submit в процессе обмена данными с сервером */
 	renderLoading(isLoading) {
 		if (isLoading === true) {
@@ -40,5 +41,5 @@ export default class PopupWithForm extends Popup {
 		} else {
 			this._submitButtonElement.textContent = 'Сохранить';
 		}
-	}
-}
+	};
+};

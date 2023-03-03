@@ -21,17 +21,17 @@ export default class Card {
     this._counterLikes = this._cardElement.querySelector('.element__count-like');
   };
 
-  // Проверка юзер-лайков
+  /**  Проверка юзер-лайков */
   checkUserLikes() {
     return this._likes.some(item => item._id === this._userId);
   }
 
-  // ID карточки
+  /**  ID карточки */
   getIdCard() {
     return this._cardId
   }
 
-  //Трансформ лайка после проверки
+  /**  Трансформ лайка после проверки */
   colorLikes() {
     if (this.checkUserLikes()) {
       this._addLike()
@@ -40,12 +40,12 @@ export default class Card {
     }
   }
 
-  //Добавить лайк
+  /**  Добавить лайк */
   _addLike() {
     this._elementLike.classList.add('element__like_activ')
   }
 
-  //Удалить лайк
+  /**  Удалить лайк */
   _deleteLike() {
     this._elementLike.classList.remove('element__like_active')
   }
@@ -73,13 +73,13 @@ export default class Card {
   }
   _getTemplate() {
 
-    // забираем разметку из HTML и клонируем элемент
+    /**  забираем разметку из HTML и клонируем элемент */
     this._cardElement = document
       .querySelector(this._templateSelector)
-      .content.querySelector('.element') //article, li
+      .content.querySelector('.element')
       .cloneNode(true);
 
-    // вернём DOM-элемент карточки
+    /**  вернём DOM-элемент карточки */
     return this._cardElement;
   }
 
@@ -93,7 +93,7 @@ export default class Card {
     return this._element;
   }
 
-  // Установить лайк
+  /**  Установить лайк */
   setLikes(likesList) {
     this._likes = likesList
     this._counterLikes.textContent = this._likes.length

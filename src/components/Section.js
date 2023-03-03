@@ -1,22 +1,23 @@
 export default class Section {
 	constructor({ renderer }, selectorContainer) {
-		this._renderer = renderer; // функция, которая отвечает за создание и отрисовку данных на странице;
-		this._container = selectorContainer; // селектор контейнера, в который нужно добавлять созданные элементы.
-	}
+		this._renderer = renderer; 			 // функция, которая отвечает за создание и отрисовку на странице
+		this._container = selectorContainer; // селектор контейнера
+	};
 
-	// перебирает изначальный массив – initialCards, выуживая из него данные для каждой отдельной карточки.
-	// renderItems() {
-
+	/**  перебирает изначальный массив – initialCards, выуживая из него данные для каждой отдельной карточки. */
 	renderItems(items) {
-		items.forEach(this._renderer)
-	  }
-	  
-	// универсальный метод, который формирует карточку и отрисовывает ее на странице (в начале списка);
-	addItem(item) {
-		this._container.prepend(item);
-	}
 
-	addItemAppend(item) {
-		this._container.append(item)
-	  }
-}
+		items.forEach((item) => {
+		  this._renderer(item);
+		});
+	  };
+
+	/** формирует карточку и добавляет ее на странице (в начале списка) */
+	addItem(element) {
+		this._container.prepend(element);
+	};
+
+	addItemAppend(element) {
+		this._container.append(element)
+	};
+};
