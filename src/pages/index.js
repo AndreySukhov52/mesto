@@ -94,12 +94,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 		console.log(`Ошибка: ${error}`)
 	})
 
-const handleDeleteClick = (id) => {
+const handleDeleteClick = (id, card) => {
 	popupConfirmation.renderLoading(true);
 	api
 		.deleteCard(id)
 		.then(() => {
-			popupConfirmation.deleteCard()
+			card.remove()
 			popupConfirmation.close()
 		})
 		.catch((error) => {
@@ -154,7 +154,7 @@ popupAddCardForm.setEventListeners();
 /**  Открываем и обновляем попап с карточками */
 popupOpenCards.addEventListener('click', function () {
 	validatorAddCardForm.resetValidation(); 		  // сброс ошибок валидации
-	validatorAddCardForm.disableAddCardPopupButton(); // выключение кнопки сохранить
+	validatorAddCardForm.disableSubmitButton(); // выключение кнопки сохранить
 	popupAddCardForm.open();
 });
 
@@ -175,7 +175,7 @@ updateProfile.setEventListeners();
 /**  Клик на кнопке редактирования информации о профиле */
 popupOpenEdit.addEventListener('click', () => {
 	validatorProfileForm.resetValidation();           // сброс ошибок валидации
-	validatorProfileForm.switchProfileButtonMode();   // включение кнопки сохранить
+	validatorProfileForm.enableSubmitButton();   // включение кнопки сохранить
 	const { name, about } = userInfo.getUserInfo();
 	inputName.value = name;
 	inputAbout.value = about;
@@ -199,7 +199,7 @@ updateAvatar.setEventListeners();
 /** Клик на кнопке редактирования аватара */
 buttonUpdateAvatar.addEventListener('click', () => {
 	validatorFormUpdateAvatar.resetValidation();			// сброс ошибок валидации
-	validatorFormUpdateAvatar.disableAddCardPopupButton();  // выключение кнопки сохранить
+	validatorFormUpdateAvatar.disableSubmitButton();  // выключение кнопки сохранить
 
 	updateAvatar.open();
 });

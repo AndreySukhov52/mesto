@@ -68,13 +68,13 @@ export default class FormValidator {
   };
 
   /** метод отключает кнопку в форме добавления карточки при первом открытии */
-  disableAddCardPopupButton() {
+  disableSubmitButton() {
     this._buttonElement.classList.add(this._config.inactiveButtonClass);
     this._buttonElement.disabled = true;
   };
 
   /** метод активирует кнопку профиля при открытии попапа */
-  switchProfileButtonMode() {
+  enableSubmitButton() {
     this._buttonElement.classList.remove(this._config.inactiveButtonClass);
     this._buttonElement.disabled = false;
   };
