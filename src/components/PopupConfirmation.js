@@ -29,10 +29,5 @@ export default class PopupConfirmation extends Popup {
     });
     super.setEventListeners();
   };
-
-  /**  удалить карточку со страницы */
-  deleteCard() {
-    this._card.remove();
-  };
 };
 
