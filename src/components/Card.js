@@ -1,7 +1,7 @@
 /** класс Card  */
 export default class Card {
   /** конструктор класса  */
-  constructor(data, userId, templateSelector, { handleCardClick, handleDeleteClick, handleLikeClick }) {
+  constructor(data, userId, templateSelector, handleCardClick, handleLikeClick, handleDeleteButtonClick) {
     this._data = data
     this._itemName = data.name;
     this._itemLink = data.link;
@@ -11,7 +11,7 @@ export default class Card {
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
-    this._handleDeleteClick = handleDeleteClick;
+    this._handleDeleteButtonClick = handleDeleteButtonClick;
     this._isUserCard = userId === data.owner._id;
     this._element = this._getTemplate();
     this._elementImg = this._cardElement.querySelector('.element__image'); //найдем картинку 
@@ -47,32 +47,29 @@ export default class Card {
 
   /**  Удалить лайк */
   _deleteLike() {
-    this._elementLike.classList.remove('element__like_active')
+    this._elementLike.classList.remove('element__like_activ')
   };
 
   _setListenersItems() {
-    this._elementDelete.addEventListener('click', this._handleDeleteClick);
+    this._elementDelete.addEventListener('click', () => {
+      this._handleDeleteButtonClick(this);
+    });
 
     this._elementLike.addEventListener('click', () => {
-      this._handleLikeClick(this._cardId)
+      this._handleLikeClick(this._cardId);
       this.colorLikes()
-    })
+    });
     this._elementImg.addEventListener('click', () => {
-      this._handleCardClick(this._itemName, this._itemLink)
-    })
+      this._handleCardClick(this._itemName, this._itemLink);
+    });
 
     if (!this._isUserCard) {
       this._elementDelete.remove();
       this._elementDelete = null;
-    } else {
-      this._elementDelete.addEventListener('click',
-        () => {
-          this._handleDeleteClick(this._cardId, this._element)
-        });
-    };
+    }
   };
-  _getTemplate() {
 
+  _getTemplate() {
     /**  забираем разметку из HTML и клонируем элемент */
     this._cardElement = document
       .querySelector(this._templateSelector)
@@ -101,7 +98,8 @@ export default class Card {
   };
 
   /**  удалить карточку со страницы */
-  deleteCard() {
-    this._card.remove();
+  delCard() {
+    this._element.remove();
+    this._element = null;
   };
 };

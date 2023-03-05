@@ -8,7 +8,7 @@ export const popopProfile = '.popup_profile';
 /** найти селектор блока popup_type_update-avatar */
 export const popupUpdateAvatar = document.querySelector('.popup_type_update-avatar');
 /** найти селектор блока popup_type_confirmation */
-export const popopConfirmation = '.popup_type_confirmation';
+export const popopConfirmationDel = '.popup_type_confirmation';
 /** найти селектор блока popup_photofull */
 export const popupPhotofull = '.popup_photofull';
 

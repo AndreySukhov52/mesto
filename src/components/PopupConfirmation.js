@@ -16,18 +16,18 @@ export default class PopupConfirmation extends Popup {
     }
   };
 
-  open(id, cardItem) {
+  open(card) {
     super.open()
-    this._id = id;
-    this._card = cardItem
+    // this._id = id;
+    this._card = card;
   };
 
   setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault()
-      this._handleDeleteClick(this._id, this._card)
+      this._handleDeleteClick(this._card);
     });
-    super.setEventListeners();
   };
 };
 

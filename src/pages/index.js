@@ -6,7 +6,7 @@ import {
 	template,
 	popopCards,
 	popopProfile,
-	popopConfirmation,
+	popopConfirmationDel,
 	containerElement,
 	popupPhotofull,
 	selectorUserName,
@@ -53,34 +53,34 @@ validatorFormUpdateAvatar.enableValidation();
 let userId = null;
 
 /** Создание новой карточки */
-const createNewCard = (data) => {
-	const newCard = new Card(data, userId, template, {
-		handleCardClick: (name, link) => {
-			popupPhotos.open(name, link)
+const createCard = (data, userId) => {
+	const card = new Card(data, userId, template,
+		function handleCardClick(name, link) {
+			popupPhotos.open(name, link);
 		},
-		handleLikeClick: (id) => {
-			newCard.checkUserLikes()
+		function handleLikeClick(cardId) {
+			card.checkUserLikes()
 				? api
-					.deleteLike(id)
+					.deleteLike(cardId)
 					.then((res) => {
-						newCard.setLikes(res.likes)
+						card.setLikes(res.likes)
 					})
 					.catch((error) => console.log(`Ошибка: ${error}`))
 				: api
-					.addLike(id)
+					.addLike(cardId)
 					.then((res) => {
-						newCard.setLikes(res.likes)
+						card.setLikes(res.likes)
 					})
 					.catch((error) => {
 						console.log(`Ошибка: ${error}`)
 					})
 		},
-		handleDeleteClick: (id, card) => {
-			popupConfirmation.open(id, card);
-		},
-	})
-
-	return newCard.createElements()
+		function handleDeleteButtonClick(card) {
+			popupConfirmation.open(card);
+		}
+	);
+	const cardElement = card.createElements();
+	return cardElement;
 }
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -94,28 +94,26 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 		console.log(`Ошибка: ${error}`)
 	})
 
-const handleDeleteClick = (id, card) => {
-	popupConfirmation.renderLoading(true);
-	api
-		.deleteCard(id)
-		.then(() => {
-			card.remove()
-			popupConfirmation.close()
-		})
-		.catch((error) => {
-			console.log(`Ошибка: ${error}`)
-				.finally(() => popupConfirmation.renderLoading(false))
-		})
-};
+	/**  Подтверждение удаления карточки */
+const popupConfirmation = new PopupConfirmation(
+	popopConfirmationDel,
+	function handleDeleteClick(card) {
+		api.deleteCard(card._cardId)
+			.then(() => {
+				card.delCard();
+				popupConfirmation.close();
+			})
+			.catch((error) => {
+				console.log(`Ошибка: ${error}`)
+					.finally(() => popupConfirmation.renderLoading(false))
+			})
+	}
+);
+popupConfirmation.setEventListeners();
 
 /**  Функция попапа увеличения картинки */
 const popupPhotos = new PopupWithImage(popupPhotofull);
 popupPhotos.setEventListeners();
-
-/**  Подтверждение удаления карточки */
-const popupConfirmation = new PopupConfirmation(popopConfirmation, (id, card) =>
-	handleDeleteClick(id, card),)
-popupConfirmation.setEventListeners();
 
 const userInfo = new UserInfo({
 	userName: selectorUserName,
@@ -128,7 +126,7 @@ const cardElementList = new Section(
 	{
 		data: initialCards,
 		renderer: (item) => {
-			cardElementList.addItemAppend(createNewCard(item))
+			cardElementList.addItemAppend(createCard(item, userId))
 		},
 	},
 	containerElement
@@ -142,7 +140,7 @@ const popupAddCardForm = new PopupWithForm(popopCards,
 	(data) => {
 		popupAddCardForm.renderLoading(true);
 		api.addCard(data.inputNameCard, data.inputUrlCard).then((data) => {
-			cardElementList.addItem(createNewCard(data));
+			cardElementList.addItem(createCard(data, userId));
 			popupAddCardForm.close();
 		}).catch((error) => {
 			console.error(`Ошибка: ${error}`);
