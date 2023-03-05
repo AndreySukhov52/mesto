@@ -18,7 +18,7 @@ export default class PopupConfirmation extends Popup {
 
   open(card) {
     super.open()
-    // this._id = id;
+    //this._id = id;
     this._card = card;
   };
 

@@ -106,7 +106,9 @@ const popupConfirmation = new PopupConfirmation(
 			})
 			.catch((error) => {
 				console.log(`Ошибка: ${error}`)
-					.finally(() => popupConfirmation.renderLoading(false))
+			})
+			.finally(() => {
+				popupConfirmation.renderLoading(false)
 			})
 	}
 );
