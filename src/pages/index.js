@@ -94,10 +94,11 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 		console.log(`Ошибка: ${error}`)
 	})
 
-	/**  Подтверждение удаления карточки */
+/**  Подтверждение удаления карточки */
 const popupConfirmation = new PopupConfirmation(
 	popopConfirmationDel,
 	function handleDeleteClick(card) {
+		popupConfirmation.renderLoading(true);
 		api.deleteCard(card._cardId)
 			.then(() => {
 				card.delCard();
